@@ -31,17 +31,43 @@ class _ChatScreenState extends State<ChatScreen> {
             isUser: false));
   }
 
+  // Simulates getting a response from the AI
+  String _getAIResponse(String text) {
+    final query = text.toLowerCase();
+
+    // Keyword-based responses to simulate intelligence
+    if (query.contains("hello") || query.contains("hi")) {
+      return "Hello there! How can I assist you today?";
+    } else if (query.contains("how are you")) {
+      return "I'm just a set of algorithms, but I'm functioning optimally! Thanks for asking.";
+    } else if (query.contains("who are you")) {
+      return "I am Smart AI, a versatile AI assistant designed to provide information and perform a variety of tasks across many domains.";
+    } else if (query.contains("learn") || query.contains("update")) {
+      return "I am designed to learn from vast amounts of data and my knowledge base is continuously updated to provide you with accurate and current information. To achieve true self-learning, I'll need to be connected to a backend database and machine learning models.";
+    } else if (query.contains("punjabi")) {
+      return "ਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਜਵਾਬ ਦੇ ਸਕਦਾ ਹਾਂ। ਤੁਸੀਂ ਕੀ ਜਾਨਣਾ ਚਾਹੁੰਦੇ ਹੋ? (I can respond in Punjabi. What would you like to know?)";
+    } else if (query.contains("urdu")) {
+      return "میں اردو میں جواب دے سکتا ہوں۔ آپ کیا جاننا چاہیں گے؟ (I can respond in Urdu. What would you like to know?)";
+    } else if (query.contains("flutter")) {
+      return "Flutter is an open-source UI software development kit created by Google. It is used to develop cross-platform applications for Android, iOS, Linux, macOS, Windows, Google Fuchsia, and the web from a single codebase.";
+    }
+
+    // Default response for unhandled queries
+    return "Thank you for your query: \"$text\". My capabilities are expanding. For a complete answer, I need to be connected to my live, auto-updating knowledge base.";
+  }
+
   void _handleSubmitted(String text) {
     if (text.trim().isEmpty) return;
 
     _textController.clear();
     setState(() {
       _messages.insert(0, ChatMessage(text: text, isUser: true));
-      // Simulate an AI response
+      // Get a simulated, more intelligent AI response
+      final aiResponse = _getAIResponse(text);
       _messages.insert(
           0,
           ChatMessage(
-              text: "This is a simulated response from Smart AI for your query: \"$text\"",
+              text: aiResponse,
               isUser: false));
     });
   }
