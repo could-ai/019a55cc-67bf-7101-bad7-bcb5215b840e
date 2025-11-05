@@ -50,7 +50,10 @@ class _ChatScreenState extends State<ChatScreen> {
       return "میں اردو میں جواب دے سکتا ہوں۔ آپ کیا جاننا چاہیں گے؟ (I can respond in Urdu. What would you like to know?)";
     } else if (query.contains("flutter")) {
       return "Flutter is an open-source UI software development kit created by Google. It is used to develop cross-platform applications for Android, iOS, Linux, macOS, Windows, Google Fuchsia, and the web from a single codebase.";
+    } else if (query.contains("best ai") || query.contains("better than") || query.contains("advanced features")) {
+      return "That's an excellent question. The AI landscape is rapidly evolving with powerful tools like Google Gemini for advanced reasoning and conversation, and specialized models like Adobe Firefly for image generation. My goal is to surpass them by integrating the most advanced features, including real-time, self-updating knowledge bases, multi-language fluency, and sophisticated content generation. My development roadmap is focused on becoming the most comprehensive and accurate AI assistant available.";
     }
+
 
     // Default response for unhandled queries
     return "Thank you for your query: \"$text\". My capabilities are expanding. For a complete answer, I need to be connected to my live, auto-updating knowledge base.";
