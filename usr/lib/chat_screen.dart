@@ -452,7 +452,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     );
                   },
                 ),
-                if (!message.isUser) ..[
+                if (!message.isUser)
                   IconButton(
                     icon: const Icon(Icons.download, size: 16),
                     tooltip: 'Download as document',
@@ -479,6 +479,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       );
                     },
                   ),
+                if (!message.isUser)
                   IconButton(
                     icon: const Icon(Icons.share, size: 16),
                     tooltip: 'Share response',
@@ -491,7 +492,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       );
                     },
                   ),
-                ],
               ],
             ),
           ),
