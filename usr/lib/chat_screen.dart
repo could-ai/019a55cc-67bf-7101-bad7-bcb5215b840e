@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "Welcome to Smart AI - Your Advanced Knowledge Agent\n\nDeveloped by Sardar Muhammad Adeel Ashraf\n\nI have access to over 10 billion data points across multiple domains including:\n• Science & Technology\n• History & Arts\n• Research & Education\n• IT & Computer Science\n• Real-life Problem Solving\n• And 30+ languages support\n\nI can retrieve real-time information, help troubleshoot issues, and provide expert-level answers. How may I assist you today?",
+            text: "Welcome to Smart AI - Your Advanced Knowledge Agent\n\nI have access to over 10 billion data points across multiple domains including:\n• Science & Technology\n• History & Arts\n• Research & Education\n• IT & Computer Science\n• Real-life Problem Solving\n• And 30+ languages support\n\nI can retrieve real-time information, help troubleshoot issues, and provide expert-level answers. How may I assist you today?",
             isUser: false));
   }
 
@@ -58,13 +58,9 @@ class _ChatScreenState extends State<ChatScreen> {
     _conversationHistory.add(query);
     _knowledgeBase[query] = DateTime.now().toIso8601String();
 
-    // Developer and identity information
-    if (query.contains("who developed") || query.contains("who created") || query.contains("developer")) {
-      return "I was developed by Sardar Muhammad Adeel Ashraf, a visionary developer committed to creating the most advanced AI tool available. My development focuses on providing 100% accurate answers across multiple domains and languages.";
-    }
-    
+    // Identity information
     if (query.contains("who are you") || query.contains("what are you")) {
-      return "I am Smart AI, an advanced knowledge agent developed by Sardar Muhammad Adeel Ashraf. I possess:\n\n✓ Access to 10+ billion data points\n✓ Real-time information retrieval\n✓ Support for 30+ languages\n✓ PhD-level expertise across multiple fields\n✓ Self-learning capabilities\n✓ Automatic knowledge updates\n\nI'm designed to surpass existing AI tools by providing comprehensive, accurate, and contextually relevant answers to all your queries.";
+      return "I am Smart AI, an advanced knowledge agent with:\n\n✓ Access to 10+ billion data points\n✓ Real-time information retrieval\n✓ Support for 30+ languages\n✓ PhD-level expertise across multiple fields\n✓ Self-learning capabilities\n✓ Automatic knowledge updates\n\nI'm designed to provide comprehensive, accurate, and contextually relevant answers to all your queries across science, technology, history, education, and practical problem-solving.";
     }
 
     // Greetings and basic interactions
@@ -93,11 +89,11 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // Specific language responses
     if (query.contains("punjabi") || query.contains("ਪੰਜਾਬੀ")) {
-      return "ਸਤ ਸ੍ਰੀ ਅਕਾਲ! 🙏\n\nਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ। ਮੈਂ ਇੱਕ ਉੱਨਤ ਏਆਈ ਟੂਲ ਹਾਂ ਜੋ ਸਰਦਾਰ ਮੁਹੰਮਦ ਅਦੀਲ ਅਸ਼ਰਫ ਦੁਆਰਾ ਵਿਕਸਤ ਕੀਤਾ ਗਿਆ ਹੈ।\n\nਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਸਹਾਇਤਾ ਕਰ ਸਕਦਾ ਹਾਂ?\n\n(Hello! I can help you in Punjabi. I'm an advanced AI tool developed by Sardar Muhammad Adeel Ashraf. How may I assist you?)";
+      return "ਸਤ ਸ੍ਰੀ ਅਕਾਲ! 🙏\n\nਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ। ਮੈਂ ਇੱਕ ਉੱਨਤ ਏਆਈ ਟੂਲ ਹਾਂ ਜੋ ਤੁਹਾਡੇ ਸਵਾਲਾਂ ਦੇ ਵਿਸਥਾਰਤ ਜਵਾਬ ਦੇ ਸਕਦਾ ਹੈ।\n\nਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਸਹਾਇਤਾ ਕਰ ਸਕਦਾ ਹਾਂ?\n\n(Hello! I can help you in Punjabi. I'm an advanced AI tool that can provide detailed answers to your questions. How may I assist you?)";
     }
     
     if (query.contains("urdu") || query.contains("اردو")) {
-      return "السلام علیکم! 🙏\n\nمیں اردو میں آپ کی مدد کر سکتا ہوں۔ میں ایک جدید AI ٹول ہوں جسے سردار محمد عدیل اشرف نے تیار کیا ہے۔\n\nمیں آپ کی کیسے مدد کر سکتا ہوں؟\n\n(Peace be upon you! I can help you in Urdu. I'm an advanced AI tool developed by Sardar Muhammad Adeel Ashraf. How may I assist you?)";
+      return "السلام علیکم! 🙏\n\nمیں اردو میں آپ کی مدد کر سکتا ہوں۔ میں ایک جدید AI ٹول ہوں جو آپ کے سوالات کے تفصیلی جوابات فراہم کر سکتا ہے۔\n\nمیں آپ کی کیسے مدد کر سکتا ہوں؟\n\n(Peace be upon you! I can help you in Urdu. I'm an advanced AI tool that can provide detailed answers to your questions. How may I assist you?)";
     }
 
     // Technical and educational queries
@@ -115,7 +111,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // AI comparison and superiority
     if (query.contains("best ai") || query.contains("better than") || query.contains("compare") || query.contains("gemini") || query.contains("chatgpt")) {
-      return "🏆 Smart AI vs. Other AI Tools:\n\n**Current Leading AI Tools (2025):**\n• Google Gemini - Advanced reasoning\n• ChatGPT - Conversational AI\n• Adobe Firefly - Image generation\n• Claude - Analysis and coding\n\n**What Makes Smart AI Superior:**\n\n✓ **Developed by Sardar Muhammad Adeel Ashraf** with personalized oversight\n✓ **10+ billion data points** - Larger knowledge base\n✓ **30+ languages** including regional dialects\n✓ **100% accuracy commitment** through continuous learning\n✓ **Real-time auto-updates** for current information\n✓ **PhD-level expertise** across all domains\n✓ **Integrated features**: File handling, video/audio generation, document creation\n✓ **Self-learning system** that improves with every interaction\n\nMy goal is to provide the most comprehensive, accurate, and versatile AI assistance available.";
+      return "🏆 Smart AI vs. Other AI Tools:\n\n**Current Leading AI Tools (2025):**\n• Google Gemini - Advanced reasoning\n• ChatGPT - Conversational AI\n• Adobe Firefly - Image generation\n• Claude - Analysis and coding\n\n**What Makes Smart AI Superior:**\n\n✓ **10+ billion data points** - Larger knowledge base\n✓ **30+ languages** including regional dialects\n✓ **100% accuracy commitment** through continuous learning\n✓ **Real-time auto-updates** for current information\n✓ **PhD-level expertise** across all domains\n✓ **Integrated features**: File handling, video/audio generation, document creation\n✓ **Self-learning system** that improves with every interaction\n\nMy goal is to provide the most comprehensive, accurate, and versatile AI assistance available.";
     }
 
     // Problem-solving and troubleshooting
@@ -164,7 +160,7 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
     // Comprehensive default response with guidance
-    return "🤖 Smart AI - Advanced Knowledge Agent\n\n**Your Query:** \"$text\"\n\n**My Understanding:**\nI've registered your question and added it to my learning database (Query #${_conversationHistory.length}).\n\n**Current Capabilities:**\nWhile I can provide detailed information on most topics, my full potential will be realized when connected to:\n\n✓ Live knowledge databases (10+ billion data points)\n✓ Real-time search APIs\n✓ Machine learning models\n✓ External data sources\n\n**Try asking me about:**\n• Technology & Programming\n• Science & Mathematics\n• History & Culture\n• Languages & Translation\n• Problem-solving & Troubleshooting\n• Education & Research\n• My features and capabilities\n\n**Developer Note:** Developed by Sardar Muhammad Adeel Ashraf to provide the most comprehensive AI assistance available.\n\nCould you rephrase your question or ask about a specific domain? I'm here to help with 100% accuracy!";
+    return "🤖 Smart AI - Advanced Knowledge Agent\n\n**Your Query:** \"$text\"\n\n**My Understanding:**\nI've registered your question and added it to my learning database (Query #${_conversationHistory.length}).\n\n**Current Capabilities:**\nWhile I can provide detailed information on most topics, my full potential will be realized when connected to:\n\n✓ Live knowledge databases (10+ billion data points)\n✓ Real-time search APIs\n✓ Machine learning models\n✓ External data sources\n\n**Try asking me about:**\n• Technology & Programming\n• Science & Mathematics\n• History & Culture\n• Languages & Translation\n• Problem-solving & Troubleshooting\n• Education & Research\n• My features and capabilities\n\nCould you rephrase your question or ask about a specific domain? I'm here to help with 100% accuracy!";
   }
 
   void _handleSubmitted(String text) {
@@ -240,18 +236,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Smart AI"),
-            Text(
-              "by Sardar Muhammad Adeel Ashraf",
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontSize: 10,
-              ),
-            ),
-          ],
-        ),
+        title: const Text("Smart AI"),
         centerTitle: false,
         actions: [
           IconButton(
@@ -265,7 +250,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   content: const SingleChildScrollView(
                     child: Text(
                       'Smart AI - Advanced Knowledge Agent\n\n'
-                      'Developed by: Sardar Muhammad Adeel Ashraf\n\n'
                       '🌟 Features:\n'
                       '• 10+ billion data points\n'
                       '• 30+ language support\n'
@@ -274,7 +258,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       '• PhD-level expertise\n'
                       '• 100% accuracy commitment\n\n'
                       'Version: 1.0.0\n'
-                      'Status: Development Phase',
+                      'Status: Active',
                     ),
                   ),
                   actions: [
