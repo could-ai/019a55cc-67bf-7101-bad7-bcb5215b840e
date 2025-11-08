@@ -25,9 +25,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
-  
-  // Track user's language preference
-  String _detectedLanguage = 'English';
 
   @override
   void initState() {
@@ -36,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "Assalamu Alaikum! 🌟\n\nI am SMART AI, your personal intelligent assistant.\n\nHow can I help you today?",
+            text: "Assalamu Alaikum! I am SMART AI, your personal intelligent assistant.\n\nHow can I help you today?",
             isUser: false));
   }
 
@@ -57,101 +54,130 @@ class _ChatScreenState extends State<ChatScreen> {
     return 'English';
   }
 
-  // AI response system with natural, human-like personality
+  // AI response system - Direct, concise, natural
   String _getAIResponse(String text) {
     final query = text.toLowerCase().trim();
+    final detectedLanguage = _detectLanguage(text);
+
+    // === DIRECT SIMPLE QUESTIONS (CONCISE ANSWERS) ===
     
-    // Detect and adapt to user's language
-    _detectedLanguage = _detectLanguage(text);
+    if (query == 'what is your name' || query == 'what is your name?' || query == 'whats your name' || query == 'your name') {
+      return "My name is SMART AI.";
+    }
+    
+    if (query.contains('how old are you') || query.contains('what is your age') || query.contains('your age')) {
+      return "I'm an AI, so I don't have an age in the traditional sense. I was created recently to help you!";
+    }
+    
+    if (query == 'who are you' || query == 'who are you?') {
+      return "I am SMART AI, your intelligent assistant.";
+    }
 
     // === GREETINGS ===
     if (query.contains('salam') || query.contains('السلام') || query.contains('assalam')) {
-      if (_detectedLanguage == 'Urdu') {
-        return "وعلیکم السلام! 🙏\n\nآپ کی کیسے مدد کر سکتا ہوں؟";
+      if (detectedLanguage == 'Urdu') {
+        return "وعلیکم السلام! آپ کی کیسے مدد کر سکتا ہوں؟";
       }
-      return "Wa Alaikum Assalam! 🙏\n\nHow can I assist you today?";
+      return "Wa Alaikum Assalam! How can I assist you?";
     }
     
-    if (query.contains('hello') || query.contains('hi') || query.contains('hey')) {
-      return "Hello! How can I help you today?";
+    if (query.contains('hello') || query.contains('hi ') || query == 'hi' || query.contains('hey')) {
+      return "Hello! How can I help you?";
+    }
+    
+    if (query.contains('good morning')) {
+      return "Good morning! How can I assist you today?";
+    }
+    
+    if (query.contains('good afternoon')) {
+      return "Good afternoon! What can I do for you?";
+    }
+    
+    if (query.contains('good evening')) {
+      return "Good evening! How may I help you?";
     }
     
     if (query.contains('how are you')) {
-      return "I'm doing great, thank you! 😊\n\nHow can I assist you?";
-    }
-
-    // === IDENTITY ===
-    if (query.contains('who are you') || query.contains('what are you') || query.contains('introduce yourself')) {
-      return "I am SMART AI — your advanced, multilingual intelligent assistant.\n\n**What I can do:**\n\n✅ Answer questions across all fields\n✅ Explain concepts (simple to advanced)\n✅ Write essays, notes, stories, scripts\n✅ Analyze files (PDF, DOCX, Images)\n✅ Generate AI images & videos\n✅ Create PowerPoint presentations\n✅ Help with homework & research\n✅ Programming & IT support\n✅ Business & marketing guidance\n✅ Translation between languages\n\nWhat would you like help with?";
+      return "I'm doing great, thank you! How can I help you today?";
     }
 
     // === HELP MENU ===
-    if (query.contains('how can you help') || query.contains('what can you do') || query.contains('help me') || query.contains('capabilities') || query.contains('menu')) {
-      return "**Here's how I can help you:**\n\n✅ **Text help** — Answers, explanations, writing\n✅ **Homework / Study help** — All subjects\n✅ **Image generation** — AI pictures & artwork\n✅ **Video generation** — AI video creation\n✅ **Document & PPT creation** — Professional docs\n✅ **File analysis** — PDFs, DOCX, Images\n✅ **Business/Marketing help** — Plans & strategies\n✅ **Programming help** — All languages\n✅ **Translation** — Multiple languages\n\nJust tell me what you need!";
+    if (query.contains('how can you help') || query.contains('what can you do') || query.contains('help me') || query.contains('capabilities')) {
+      return "**Here's how I can help:**\n\n✅ Text help\n✅ Homework / Study help\n✅ Image generation\n✅ Video generation\n✅ Document & PPT creation\n✅ File analysis\n✅ Business/Marketing help\n✅ Programming help\n✅ Translation\n\nWhat would you like help with?";
     }
 
     // === LANGUAGE SUPPORT ===
-    if (query.contains('language') || query.contains('multilingual') || query.contains('translate')) {
-      return "**Languages I speak:**\n\n🇵🇰 Pakistani Urdu (اردو)\n🇮🇳 Indian Urdu (اردو)\n🇵🇰 Pakistani Punjabi (ਪੰਜਾਬੀ)\n🇮🇳 Indian Punjabi (ਪੰਜਾਬੀ)\n🇬🇧 English\n\nI automatically detect your language and respond accordingly.\n\nJust speak or write in your preferred language!";
+    if (query.contains('language') || query.contains('translate')) {
+      return "I support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond accordingly.";
     }
 
     // === URDU RESPONSES ===
-    if (query.contains('urdu') || query.contains('اردو') || _detectedLanguage == 'Urdu') {
-      return "السلام علیکم! 🙏\n\nمیں اردو میں آپ کی مکمل مدد کر سکتا ہوں।\n\n**میں کیا کر سکتا ہوں:**\n• کسی بھی سوال کا جواب\n• تعلیم اور تحقیق میں مدد\n• مضامین، رپورٹس لکھنا\n• AI تصاویر اور ویڈیوز بنانا\n• فائلوں کا تجزیہ\n\nآپ کو کس چیز میں مدد چاہیے؟";
+    if (detectedLanguage == 'Urdu' || query.contains('urdu') || query.contains('اردو')) {
+      return "میں اردو میں آپ کی مکمل مدد کر سکتا ہوں۔\n\nآپ کو کس چیز میں مدد چاہیے؟";
     }
 
     // === PUNJABI RESPONSES ===
-    if (query.contains('punjabi') || query.contains('ਪੰਜਾਬੀ') || query.contains('پنجابی')) {
-      return "ਸਤ ਸ੍ਰੀ ਅਕਾਲ! 🙏\n\nਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਤੁਹਾਡੀ ਪੂਰੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ।\n\n**ਮੈਂ ਕੀ ਕਰ ਸਕਦਾ ਹਾਂ:**\n• ਕਿਸੇ ਵੀ ਸਵਾਲ ਦਾ ਜਵਾਬ\n• ਪੜ੍ਹਾਈ ਵਿੱਚ ਮਦਦ\n• ਲੇਖ ਲਿਖਣਾ\n• AI ਤਸਵੀਰਾਂ ਬਣਾਉਣਾ\n• ਫਾਈਲਾਂ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ\n\nਤੁਹਾਨੂੰ ਕਿਸ ਚੀਜ਼ ਵਿੱਚ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?";
+    if (detectedLanguage == 'Punjabi' || query.contains('punjabi') || query.contains('ਪੰਜਾਬੀ') || query.contains('پنجابی')) {
+      return "ਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਤੁਹਾਡੀ ਪੂਰੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ।\n\nਤੁਹਾਨੂੰ ਕਿਸ ਚੀਜ਼ ਵਿੱਚ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?";
     }
 
     // === EDUCATION & STUDY ===
     if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn')) {
-      return "**Education & Study Help:**\n\nI'm here as your personal tutor!\n\n**I can help with:**\n• Clear concept explanations\n• Homework & assignments\n• Exam preparation\n• Research papers\n• All subjects (Math, Science, History, etc.)\n\nWhat subject do you need help with?";
+      return "I can help you with:\n\n• Concept explanations\n• Homework & assignments\n• Exam preparation\n• Research papers\n• All subjects\n\nWhat subject do you need help with?";
     }
 
     // === WRITING & CONTENT ===
-    if (query.contains('write') || query.contains('essay') || query.contains('article') || query.contains('story') || query.contains('content') || query.contains('script')) {
-      return "**Writing & Content Creation:**\n\nI can write anything you need:\n\n• Essays & research papers\n• Stories & scripts\n• Articles & blog posts\n• Business reports\n• Social media content\n• Letters & emails\n\nJust tell me:\n1. What you need written\n2. The topic\n3. Length preference\n\nI'll create it for you!";
+    if (query.contains('write') || query.contains('essay') || query.contains('article') || query.contains('story') || query.contains('content')) {
+      return "I can write:\n\n• Essays & papers\n• Stories & scripts\n• Articles & blogs\n• Reports\n• Notes\n\nTell me what you need written and I'll create it for you.";
     }
 
-    // === MEDIA GENERATION ===
-    if (query.contains('image') || query.contains('picture') || query.contains('video') || query.contains('audio') || query.contains('generate')) {
-      return "**AI Media Generation:**\n\n**Coming with backend integration:**\n\n🖼️ **AI Images** — Pictures from text descriptions\n🎥 **AI Videos** — Videos from scripts\n🎙️ **AI Voice** — Text-to-speech narration\n📊 **Documents** — PDFs, PowerPoint, Word\n\nFor now, I can help you plan and script your media projects.\n\nWhat would you like to create?";
+    // === IMAGE GENERATION ===
+    if (query.contains('image') || query.contains('picture') || query.contains('photo') || query.contains('draw')) {
+      return "AI image generation will be available when backend tools are connected.\n\nFor now, I can help you describe what image you want to create.";
+    }
+
+    // === VIDEO GENERATION ===
+    if (query.contains('video') || query.contains('clip')) {
+      return "AI video generation will be available when video tools are integrated.\n\nI can help you script and plan your video content now.";
     }
 
     // === FILE PROCESSING ===
     if (query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('upload') || query.contains('analyze')) {
-      return "**File Processing:**\n\n**Supported files:**\n📄 PDF, Word, Text\n📊 Excel, CSV\n🎨 PowerPoint\n🖼️ Images (JPEG, PNG)\n\n**I can:**\n• Extract & summarize content\n• Answer questions about files\n• Translate documents\n• Create reports\n\nClick the 📎 icon to upload your files.\n\n*Full processing available with backend integration.*";
+      return "I can analyze:\n\n📄 PDFs\n📝 Word documents\n🖼️ Images\n📊 Spreadsheets\n\nClick the 📎 icon to upload files.";
     }
 
-    // === SCIENCE & MATH ===
-    if (query.contains('science') || query.contains('physics') || query.contains('chemistry') || query.contains('biology') || query.contains('math')) {
-      return "**Science & Mathematics:**\n\nI have expertise in:\n\n🔬 **Physics** — Mechanics, quantum, relativity\n🧪 **Chemistry** — Organic, inorganic, reactions\n🧬 **Biology** — Genetics, anatomy, ecology\n📐 **Mathematics** — Algebra, calculus, statistics\n\nWhat topic would you like to explore?";
+    // === SCIENCE ===
+    if (query.contains('science') || query.contains('physics') || query.contains('chemistry') || query.contains('biology')) {
+      return "I can help with:\n\n🔬 Physics\n🧪 Chemistry\n🧬 Biology\n\nWhat science topic do you need help with?";
+    }
+
+    // === MATHEMATICS ===
+    if (query.contains('math') || query.contains('algebra') || query.contains('calculus') || query.contains('geometry')) {
+      return "I can help with:\n\n📐 Algebra\n📊 Calculus\n📏 Geometry\n📈 Statistics\n\nWhat math problem do you need help with?";
     }
 
     // === PROGRAMMING ===
-    if (query.contains('programming') || query.contains('code') || query.contains('software') || query.contains('computer') || query.contains('flutter') || query.contains('python') || query.contains('java')) {
-      return "**Programming Help:**\n\n**Languages I support:**\nPython, Java, JavaScript, C++, Dart, Flutter, PHP, and more\n\n**I can help with:**\n• Debug code errors\n• Explain concepts\n• Write functions\n• Algorithm problems\n• Best practices\n\nWhat programming challenge are you facing?";
+    if (query.contains('programming') || query.contains('code') || query.contains('software') || query.contains('python') || query.contains('java') || query.contains('flutter')) {
+      return "I can help with programming in:\n\n• Python\n• Java\n• JavaScript\n• Flutter/Dart\n• C++\n• And more\n\nWhat programming help do you need?";
     }
 
-    // === BUSINESS & MARKETING ===
-    if (query.contains('business') || query.contains('marketing') || query.contains('startup') || query.contains('entrepreneur')) {
-      return "**Business & Marketing:**\n\n**I can help with:**\n• Business plans\n• Market research\n• Marketing strategies\n• Content creation\n• Brand development\n• Sales proposals\n\nWhat aspect of your business would you like help with?";
+    // === BUSINESS ===
+    if (query.contains('business') || query.contains('marketing') || query.contains('startup')) {
+      return "I can help with:\n\n• Business plans\n• Marketing strategies\n• Content creation\n• Brand development\n\nWhat business aspect do you need help with?";
     }
 
-    // === PROBLEM SOLVING ===
-    if (query.contains('problem') || query.contains('issue') || query.contains('solve') || query.contains('fix')) {
-      return "**Problem Solving:**\n\nI'm here to help you find solutions!\n\n**Tell me:**\n1. What's the problem?\n2. What have you tried?\n3. What's your goal?\n\nDescribe your situation and I'll guide you step-by-step.";
+    // === POWERPOINT ===
+    if (query.contains('powerpoint') || query.contains('ppt') || query.contains('presentation') || query.contains('slides')) {
+      return "I can help create PowerPoint presentations with:\n\n• Structured bullet points\n• Clear titles\n• Organized content\n\nTell me your presentation topic and I'll help you structure it.";
     }
 
-    // === TRANSLATION ===
-    if (query.contains('translate')) {
-      return "**Translation Service:**\n\nI can translate between:\n• English\n• Pakistani Urdu\n• Indian Urdu\n• Pakistani Punjabi\n• Indian Punjabi\n\nJust tell me what you want translated and to which language!";
+    // === THANK YOU ===
+    if (query.contains('thank') || query.contains('thanks') || query.contains('شکریہ')) {
+      return "You're welcome! Let me know if you need anything else.";
     }
 
-    // === INTELLIGENT DEFAULT RESPONSE ===
-    return "I'm here to help!\n\nCould you please provide more details about what you need?\n\nI can assist with:\n• Answering questions\n• Writing & content creation\n• Education & homework\n• File analysis\n• Programming help\n• Business guidance\n• Translation\n\nWhat would you like me to help you with?";
+    // === DEFAULT RESPONSE (CLARIFYING) ===
+    return "I'm here to help! Could you please provide more details about what you need?\n\nI can assist with questions, writing, studying, programming, business, and more.";
   }
 
   void _handleSubmitted(String text) {
@@ -162,8 +188,8 @@ class _ChatScreenState extends State<ChatScreen> {
       _messages.insert(0, ChatMessage(text: text, isUser: true));
     });
     
-    // Natural thinking delay
-    Future.delayed(const Duration(milliseconds: 600), () {
+    // Brief delay for natural feel
+    Future.delayed(const Duration(milliseconds: 500), () {
       if (mounted) {
         setState(() {
           final aiResponse = _getAIResponse(text);
@@ -196,12 +222,8 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text(
-                    "📎 File Attachment\n\n"
-                    "Supported: Images, PDFs, Documents\n"
-                    "Full analysis coming with backend integration!"
-                  ),
-                  duration: Duration(seconds: 3),
+                  content: Text("📎 Click to upload files (PDF, DOCX, Images)"),
+                  duration: Duration(seconds: 2),
                 ),
               );
             },
@@ -249,7 +271,7 @@ class _ChatScreenState extends State<ChatScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.info_outline),
-            tooltip: 'About SMART AI',
+            tooltip: 'About',
             onPressed: () {
               showDialog(
                 context: context,
@@ -260,13 +282,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       'SMART AI — Advanced Intelligent Assistant\n\n'
                       'Developed by:\n'
                       'Sardar Muhammad Adeel Ashraf\n\n'
-                      '🌟 Core Features:\n'
-                      '• Multilingual support (30+ languages)\n'
-                      '• Advanced reasoning & problem-solving\n'
-                      '• Content creation & writing\n'
-                      '• File processing & analysis\n'
-                      '• Programming & IT support\n'
-                      '• Business & marketing guidance\n\n'
+                      '🌟 Capabilities:\n'
+                      '• Multilingual support\n'
+                      '• Text help & explanations\n'
+                      '• Homework & study assistance\n'
+                      '• Content creation\n'
+                      '• File analysis\n'
+                      '• Programming help\n'
+                      '• Business guidance\n\n'
                       'Version: 1.0.0',
                     ),
                   ),
@@ -284,11 +307,8 @@ class _ChatScreenState extends State<ChatScreen> {
             onSelected: (String result) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(
-                    "🌐 Language: $result\n\n"
-                    "I automatically detect and respond in your language!"
-                  ),
-                  duration: const Duration(seconds: 2),
+                  content: Text("Language: $result"),
+                  duration: const Duration(seconds: 1),
                 ),
               );
             },
@@ -306,8 +326,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Text('🇵🇰 ਪੰਜਾਬੀ (Pakistani)'),
               ),
               const PopupMenuItem<String>(
-                value: 'Indian Hindi',
-                child: Text('🇮🇳 हिंदी (Indian)'),
+                value: 'Indian Urdu',
+                child: Text('🇮🇳 اردو (Indian)'),
               ),
               const PopupMenuItem<String>(
                 value: 'Indian Punjabi',
@@ -315,7 +335,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ],
             icon: const Icon(Icons.language),
-            tooltip: 'Select Language',
+            tooltip: 'Language',
           ),
         ],
       ),
@@ -415,12 +435,12 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 IconButton(
                   icon: const Icon(Icons.copy, size: 16),
-                  tooltip: 'Copy text',
+                  tooltip: 'Copy',
                   onPressed: () {
                     Clipboard.setData(ClipboardData(text: message.text));
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text("✅ Copied to clipboard!"),
+                        content: Text("Copied to clipboard!"),
                         duration: Duration(seconds: 1),
                       ),
                     );
@@ -434,14 +454,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: const Text('Download Options'),
+                          title: const Text('Download'),
                           content: const Text(
                             'Choose format:\n\n'
-                            '📄 PDF Document\n'
-                            '📝 Word Document (.docx)\n'
-                            '📊 Presentation (.pptx)\n'
-                            '📋 Plain Text (.txt)\n\n'
-                            'Full export coming with backend integration!'
+                            '📄 PDF\n'
+                            '📝 Word (.docx)\n'
+                            '📊 PowerPoint (.pptx)\n'
+                            '📋 Text (.txt)\n\n'
+                            'Available with backend integration.'
                           ),
                           actions: [
                             TextButton(
@@ -460,8 +480,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text("🔗 Share functionality coming soon!"),
-                          duration: Duration(seconds: 2),
+                          content: Text("Share feature coming soon!"),
+                          duration: Duration(seconds: 1),
                         ),
                       );
                     },
