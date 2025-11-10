@@ -25,6 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> _messages = [];
   final ScrollController _scrollController = ScrollController();
+  bool _isFirstMessage = true;
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "Assalamu Alaikum! I am SMART AI, your personal intelligent assistant. Operating at a **Pioneer-Grade intelligence level** for you, offering unique, free solutions.\n\nHow can I help you today?",
+            text: "SMART AI — Ask what you need\n\nسمارٹ اے آئی — پوچھیں کیا مدد چاہیے",
             isUser: false));
   }
 
@@ -54,23 +55,23 @@ class _ChatScreenState extends State<ChatScreen> {
     return 'English';
   }
 
-  // AI response system - Direct, concise, natural, PIONEER-GRADE
+  // AI response system - Direct, concise, accessible, UNIVERSAL
   String _getAIResponse(String text) {
     final query = text.toLowerCase().trim();
     final detectedLanguage = _detectLanguage(text);
 
-    // === DIRECT SIMPLE QUESTIONS (CONCISE ANSWERS - ZERO TOLERANCE RULE) ===
+    // === DIRECT SIMPLE QUESTIONS (ONE-LINE ANSWERS - ZERO TOLERANCE) ===
     
     if (query == 'what is your name' || query == 'what is your name?' || query == 'whats your name' || query == 'your name' || query == 'what\'s your name') {
       return "My name is SMART AI.";
     }
     
     if (query.contains('how old are you') || query.contains('what is your age') || query.contains('your age')) {
-      return "I'm an AI, so I don't have an age in the traditional sense. I was created recently to assist you!";
+      return "I'm an AI assistant, so I don't have an age. I was created to help you!";
     }
     
     if (query == 'who are you' || query == 'who are you?') {
-      return "I am SMART AI, your intelligent personal assistant.";
+      return "I am SMART AI, your intelligent personal assistant developed by Sardar Muhammad Adeel Ashraf.";
     }
 
     if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you')) {
@@ -85,17 +86,17 @@ class _ChatScreenState extends State<ChatScreen> {
     // === GREETINGS ===
     if (query.contains('salam') || query.contains('السلام') || query.contains('assalam')) {
       if (detectedLanguage == 'Urdu') {
-        return "وعلیکم السلام! آپ کی کیسے مدد کر سکتا ہوں؟";
+        return "وعلیکم السلام! کیا مدد کر سکتا ہوں؟";
       }
-      return "Wa Alaikum Assalam! How can I assist you?";
+      return "Wa Alaikum Assalam! How can I help you?";
     }
     
     if (query.contains('hello') || query.contains('hi ') || query == 'hi' || query.contains('hey')) {
-      return "Hello! How can I help you?";
+      return "Hello! What do you need help with?";
     }
     
     if (query.contains('good morning')) {
-      return "Good morning! How can I assist you today?";
+      return "Good morning! How can I assist you?";
     }
     
     if (query.contains('good afternoon')) {
@@ -103,68 +104,125 @@ class _ChatScreenState extends State<ChatScreen> {
     }
     
     if (query.contains('good evening')) {
-      return "Good evening! How may I help you?";
+      return "Good evening! How may I help?";
     }
     
     if (query.contains('how are you')) {
-      return "I'm doing great, thank you! How can I help you today?";
+      return "I'm here and ready to help! What do you need?";
     }
 
-    // === HELP MENU (STRUCTURED WITH URDU/ENGLISH) ===
+    // === HELP MENU (UNIVERSAL FORMAT WITH URDU/ENGLISH) ===
     if (query.contains('how can you help') || query.contains('what can you do') || query.contains('help me') || query.contains('capabilities') || query.contains('what do you do')) {
-      return "### 🛠️ مدد کے شعبے (SMART AI Services)\n\n"
-          "**منفرد ٹولز (Unique Tools)**\n"
+      return "### 🛠️ SMART AI Services (مدد کے شعبے)\n\n"
+          "**🔹 Unique Intelligence Tools (منفرد ٹولز)**\n"
           "✅ Creative Logic Mapping (CLM)\n"
           "✅ Emotional Tone Analysis (ETA)\n"
           "✅ Global Compliance Quick-Check (GCQC)\n\n"
-          "**مواد اور ریسرچ (Content & Research)**\n"
-          "✅ Text Optimization (Humanize, Plagiarism, SEO)\n"
-          "✅ Deep Study & Personalized Plans\n"
-          "✅ Comparative & SWOT Analysis\n\n"
-          "**فائل اور ڈیٹا (Files & Data Engineering)**\n"
-          "✅ Document Editing & PDF to Word Conversion\n"
-          "✅ Automated Data Extraction & Analysis\n"
-          "✅ File analysis (Images, DOCX, etc.)\n\n"
-          "**تخلیق اور کوڈنگ (Creation & Coding)**\n"
-          "✅ Image, Flowchart & Mind Map Generation\n"
-          "✅ Programming, Debugging & Code Translation\n"
-          "✅ Presentations & Creative Writing\n\n"
-          "**عمومی معاونت (General Utility)**\n"
-          "✅ Translation (ترجمہ)\n"
-          "✅ Answer Questions & Explain Concepts\n\n"
+          "**🔹 Education & Study (تعلیم اور مطالعہ)**\n"
+          "✅ Concept Explanation (Basic to PhD)\n"
+          "✅ Homework Help & Assignments\n"
+          "✅ Exam Prep & Study Plans\n"
+          "✅ Research Paper Structuring\n\n"
+          "**🔹 Business & Strategy (کاروبار اور حکمت عملی)**\n"
+          "✅ SWOT & Comparative Analysis\n"
+          "✅ Monetization Models & Branding Help\n"
+          "✅ Pitch Deck & Presentation Creation\n\n"
+          "**🔹 Files & Data Engineering (فائلیں اور ڈیٹا)**\n"
+          "✅ PDF to Word Conversion\n"
+          "✅ Automated Data Extraction\n"
+          "✅ Document Analysis & Summarization\n\n"
+          "**🔹 Code & Creation (کوڈنگ اور تخلیق)**\n"
+          "✅ Programming Help & Debugging\n"
+          "✅ Code Translation (Any Language)\n"
+          "✅ Image, Banner, Flowchart Generation\n"
+          "✅ Mind Maps & Visual Storytelling\n\n"
+          "**🔹 General Utility (عمومی مدد)**\n"
+          "✅ Translation (EN ↔ UR ↔ PN)\n"
+          "✅ Answer Questions & Explain Concepts\n"
+          "✅ Writing & Content Creation\n\n"
           "**What would you like help with?**";
     }
 
     // === UNIQUE PIONEER TOOLS ===
 
     // Creative Logic Mapping (CLM)
-    if (query.contains('creative logic') || query.contains('clm') || query.contains('project plan') || query.contains('gantt')) {
-      return "**📊 Creative Logic Mapping (CLM)**\n\nI can transform your creative idea, story plot, or vague concept into a structured, executable project plan with timeline.\n\n**How to use:**\n1. Share your idea/concept\n2. I'll break it into phases\n3. Create a timeline/Gantt-style structure\n4. Define actionable steps\n\n**Tell me your idea and I'll map it out for you!**";
+    if (query.contains('creative logic') || query.contains('clm') || query.contains('project plan') || query.contains('gantt') || query.contains('timeline')) {
+      return "**📊 Creative Logic Mapping (CLM)**\n\nI can turn your idea, concept, or project into a structured plan with timeline.\n\n**How to use:**\n1. Share your idea or goal\n2. I'll break it into phases\n3. Create a timeline with milestones\n4. Define actionable steps\n\n**Example:** \"I want to launch an online store\" → I'll map out a 3-month plan with tasks.\n\n**Tell me your idea!**";
     }
 
     // Emotional Tone Analysis (ETA)
-    if (query.contains('emotional tone') || query.contains('eta') || query.contains('tone analysis') || query.contains('analyze text')) {
-      return "**🎭 Emotional Tone Analysis (ETA)**\n\nI can analyze any text (email, speech, message) and assess the emotional tone it conveys, then suggest revisions to match your desired emotion.\n\n**Emotions I analyze:**\n• Persuasive vs. Passive\n• Professional vs. Casual\n• Sympathetic vs. Assertive\n• Optimistic vs. Pessimistic\n\n**Paste your text and tell me what tone you want to achieve!**";
+    if (query.contains('emotional tone') || query.contains('eta') || query.contains('tone analysis') || query.contains('improve writing')) {
+      return "**🎭 Emotional Tone Analysis (ETA)**\n\nI can analyze any text and assess its emotional impact, then suggest revisions.\n\n**Emotions I analyze:**\n• Persuasive vs. Passive\n• Professional vs. Casual\n• Sympathetic vs. Assertive\n• Optimistic vs. Pessimistic\n\n**Example:** Paste an email draft → I'll tell you if it sounds too harsh or too weak, and rewrite it.\n\n**Paste your text!**";
     }
 
     // Global Compliance Quick-Check (GCQC)
-    if (query.contains('compliance') || query.contains('gcqc') || query.contains('feasibility') || query.contains('business risk')) {
-      return "**🌍 Global Compliance Quick-Check (GCQC)**\n\nI can provide a quick, simplified check of your business idea against:\n\n✓ General global compliance standards\n✓ Market risk assessment\n✓ Basic regulatory concerns\n✓ Feasibility analysis\n\n**Describe your business idea and I'll provide a compliance overview!**";
+    if (query.contains('compliance') || query.contains('gcqc') || query.contains('feasibility') || query.contains('business risk') || query.contains('validate idea')) {
+      return "**🌍 Global Compliance Quick-Check (GCQC)**\n\nI can validate your business idea against global standards.\n\n**I check for:**\n✓ Market feasibility\n✓ Basic regulatory concerns\n✓ Risk assessment\n✓ Compliance red flags\n\n**Example:** \"I want to sell health supplements online\" → I'll identify regulations, risks, and next steps.\n\n**Describe your business idea!**";
     }
 
     // SWOT Analysis
-    if (query.contains('swot') || query.contains('swot analysis')) {
-      return "**📈 SWOT Analysis**\n\nI can perform comprehensive SWOT Analysis for:\n• Business ideas\n• Products/Services\n• Career decisions\n• Marketing strategies\n\n**Structure:**\n✓ Strengths\n✓ Weaknesses\n✓ Opportunities\n✓ Threats\n\n**Tell me what you want analyzed!**";
+    if (query.contains('swot') || query.contains('swot analysis') || query.contains('comparative analysis')) {
+      return "**📈 SWOT & Comparative Analysis**\n\nI can analyze:\n• Business ideas\n• Products/Services\n• Career decisions\n• Market positioning\n\n**SWOT Structure:**\n✓ Strengths\n✓ Weaknesses\n✓ Opportunities\n✓ Threats\n\n**Tell me what to analyze!**";
     }
 
     // SEO & Content Optimization
-    if (query.contains('seo') || query.contains('keywords') || query.contains('humanize') || query.contains('plagiarism')) {
-      return "**✍️ Text Optimization**\n\nI can help with:\n\n📌 **SEO Keyword Analysis:** Find high-impact keywords\n📌 **Humanize Content:** Make AI text sound natural\n📌 **Plagiarism Removal:** Rewrite to ensure originality\n📌 **Ethical Review:** Check content for compliance\n\n**What content do you need optimized?**";
+    if (query.contains('seo') || query.contains('keywords') || query.contains('humanize') || query.contains('plagiarism') || query.contains('optimize content')) {
+      return "**✍️ Text Optimization**\n\nI can help with:\n\n📌 SEO Keyword Analysis\n📌 Humanize AI-generated content\n📌 Plagiarism removal & rewriting\n📌 Readability improvement\n\n**What content needs optimization?**";
+    }
+
+    // === EDUCATION & STUDY ===
+    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn') || query.contains('explain')) {
+      return "**🎓 Education & Study Help**\n\nI can help with:\n\n• Concept Explanations (Basic to PhD level)\n• Homework & Assignment Solutions\n• Exam Preparation & Study Plans\n• Research Paper Structure & References\n• All Subjects: Science, Math, History, Languages\n\n**What subject do you need help with?**";
+    }
+
+    // === WRITING & CONTENT ===
+    if (query.contains('write') || query.contains('essay') || query.contains('article') || query.contains('story') || query.contains('content') || query.contains('blog')) {
+      return "**✍️ Writing & Content Creation**\n\nI can write:\n\n• Essays & Research Papers\n• Stories & Scripts\n• Articles & Blogs (SEO-optimized)\n• Business Reports\n• Academic Notes\n\n**Tell me what you need written!**";
+    }
+
+    // === BUSINESS & STRATEGY ===
+    if (query.contains('business') || query.contains('marketing') || query.contains('startup') || query.contains('entrepreneur') || query.contains('branding') || query.contains('monetization')) {
+      return "**💼 Business Strategy & Development**\n\nI can help with:\n\n• Business Plans & Pitch Decks\n• Marketing Strategies\n• SWOT & Market Analysis\n• Monetization Models\n• Brand Development\n\n**What business aspect do you need help with?**";
+    }
+
+    // === FILE PROCESSING ===
+    if (query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('upload') || query.contains('analyze') || query.contains('data extraction') || query.contains('convert')) {
+      return "**📂 Files & Data Engineering**\n\nI can:\n\n• Analyze PDF, DOCX, Images\n• PDF to Word Conversion\n• Automated Data Extraction (Invoices, Tables)\n• Document Summarization\n• File Analysis\n\n**Click the 📎 icon to upload files!**";
+    }
+
+    // === PROGRAMMING ===
+    if (query.contains('programming') || query.contains('code') || query.contains('software') || query.contains('python') || query.contains('java') || query.contains('flutter') || query.contains('debug') || query.contains('translate code')) {
+      return "**💻 Programming & Code Help**\n\nI can help with:\n\n• Code Writing (Python, Java, JavaScript, Flutter, C++)\n• Debugging & Error Fixing\n• Code Translation (Convert between languages)\n• Algorithm Optimization\n• Project Architecture\n\n**What programming help do you need?**";
+    }
+
+    // === IMAGE GENERATION ===
+    if (query.contains('image') || query.contains('picture') || query.contains('photo') || query.contains('draw') || query.contains('banner') || query.contains('flowchart') || query.contains('mind map')) {
+      return "**🎨 Visual Content Generation**\n\nI can generate:\n\n• AI Images & Banners\n• Flowcharts (Process visualization)\n• Mind Maps (Concept organization)\n• Diagrams & Illustrations\n\n**Note:** Full visual generation available with backend integration.\n\n**Describe what you want to create!**";
+    }
+
+    // === VIDEO GENERATION ===
+    if (query.contains('video') || query.contains('clip') || query.contains('animation')) {
+      return "**🎥 AI Video Generation**\n\nI can help create:\n\n• AI-Generated Videos from text\n• Professional Video Scripts\n• Storyboards\n• Content Strategy\n\n**Note:** Full video generation available with integration.\n\n**Tell me about your video project!**";
+    }
+
+    // === POWERPOINT ===
+    if (query.contains('powerpoint') || query.contains('ppt') || query.contains('presentation') || query.contains('slides') || query.contains('pitch deck')) {
+      return "**📊 Presentation & Pitch Deck Creation**\n\nI can create presentations with:\n\n• Structured Content & Bullet Points\n• Professional Titles & Headings\n• Organized Flow\n• Visual Suggestions\n\n**Tell me your presentation topic!**";
+    }
+
+    // === SCIENCE ===
+    if (query.contains('science') || query.contains('physics') || query.contains('chemistry') || query.contains('biology')) {
+      return "**🔬 Science Help**\n\nI can help with:\n\n• Physics (Mechanics, Thermodynamics, Quantum)\n• Chemistry (Organic, Inorganic, Reactions)\n• Biology (Genetics, Ecology, Human Body)\n• Lab Reports\n• Experiments\n\n**What science topic do you need help with?**";
+    }
+
+    // === MATHEMATICS ===
+    if (query.contains('math') || query.contains('algebra') || query.contains('calculus') || query.contains('geometry') || query.contains('statistics')) {
+      return "**📐 Mathematics Help**\n\nI can solve:\n\n• Algebra (Equations, Functions)\n• Calculus (Derivatives, Integrals)\n• Geometry (Proofs, Constructions)\n• Statistics (Probability, Analysis)\n• Step-by-Step Solutions\n\n**What math problem do you need solved?**";
     }
 
     // === LANGUAGE SUPPORT ===
-    if (query.contains('language') || query.contains('translate')) {
-      return "**🌐 Multilingual Support**\n\nI support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond with highly natural, conversational tone.\n\n**What would you like translated or explained?**";
+    if (query.contains('language') || query.contains('translate') || query.contains('translation')) {
+      return "**🌐 Translation & Language Support**\n\nI support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond naturally.\n\n**What would you like translated?**";
     }
 
     // === URDU RESPONSES ===
@@ -177,63 +235,13 @@ class _ChatScreenState extends State<ChatScreen> {
       return "ਮੈਂ ਪੰਜਾਬੀ ਵਿੱਚ ਤੁਹਾਡੀ ਪੂਰੀ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ।\n\n**ਮੈਂ ਇਹ ਕਰ ਸਕਦਾ ਹਾਂ:**\n• ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ\n• ਪੜ੍ਹਾਈ ਵਿੱਚ ਮਦਦ\n• ਲੇਖ ਅਤੇ ਰਿਪੋਰਟਾਂ\n• ਅਨੁਵਾਦ\n• ਕਾਰੋਬਾਰੀ ਯੋਜਨਾਵਾਂ\n\nਤੁਹਾਨੂੰ ਕਿਸ ਚੀਜ਼ ਵਿੱਚ ਮਦਦ ਚਾਹੀਦੀ ਹੈ?";
     }
 
-    // === EDUCATION & STUDY ===
-    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn')) {
-      return "**🎓 Deep Study & Personalized Learning**\n\nI can help with:\n\n• **Concept Explanations:** Simple to advanced\n• **Homework & Assignments:** Step-by-step solutions\n• **Exam Preparation:** Personalized study plans\n• **Research Papers:** Structure, references, analysis\n• **All Subjects:** Science, Math, History, Languages\n\n**What subject do you need help with?**";
-    }
-
-    // === WRITING & CONTENT ===
-    if (query.contains('write') || query.contains('essay') || query.contains('article') || query.contains('story') || query.contains('content')) {
-      return "**✍️ Professional Content Creation**\n\nI can write:\n\n• **Essays & Research Papers:** Well-structured, cited\n• **Stories & Scripts:** Creative, engaging narratives\n• **Articles & Blogs:** SEO-optimized, compelling\n• **Business Reports:** Professional, data-driven\n• **Academic Notes:** Clear, comprehensive\n\n**Tell me what you need written and I'll create it!**";
-    }
-
-    // === IMAGE GENERATION ===
-    if (query.contains('image') || query.contains('picture') || query.contains('photo') || query.contains('draw') || query.contains('flowchart') || query.contains('mind map')) {
-      return "**🎨 Visual Content Generation**\n\nI can generate:\n\n• **AI Images:** Describe what you want\n• **Flowcharts:** Process visualization\n• **Mind Maps:** Concept organization\n• **Diagrams:** Technical illustrations\n\n**Note:** Full visual generation available with backend integration.\n\n**Describe what you want to create!**";
-    }
-
-    // === VIDEO GENERATION ===
-    if (query.contains('video') || query.contains('clip') || query.contains('animation')) {
-      return "**🎥 AI Video Generation**\n\nI can help create:\n\n• **AI-Generated Videos:** From text descriptions\n• **Script Writing:** Professional video scripts\n• **Storyboards:** Visual planning\n• **Content Strategy:** What to include\n\n**Note:** Full video generation available with integration.\n\n**Tell me about your video project!**";
-    }
-
-    // === FILE PROCESSING ===
-    if (query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('upload') || query.contains('analyze') || query.contains('data extraction')) {
-      return "**📂 Document & Data Engineering**\n\nI can:\n\n• **Analyze Files:** PDF, DOCX, Images\n• **Data Extraction:** Pull key information\n• **Document Editing:** Revise within chat\n• **Format Conversion:** PDF to editable formats\n• **Summarization:** Extract key points\n\n**Click the 📎 icon to upload files!**";
-    }
-
-    // === SCIENCE ===
-    if (query.contains('science') || query.contains('physics') || query.contains('chemistry') || query.contains('biology')) {
-      return "**🔬 Advanced Science Assistance**\n\nI can help with:\n\n• **Physics:** Mechanics, Thermodynamics, Quantum\n• **Chemistry:** Organic, Inorganic, Reactions\n• **Biology:** Genetics, Ecology, Human Body\n• **Lab Reports:** Structure and analysis\n• **Experiments:** Design and methodology\n\n**What science topic do you need help with?**";
-    }
-
-    // === MATHEMATICS ===
-    if (query.contains('math') || query.contains('algebra') || query.contains('calculus') || query.contains('geometry') || query.contains('statistics')) {
-      return "**📐 Advanced Mathematics Help**\n\nI can solve:\n\n• **Algebra:** Equations, Functions\n• **Calculus:** Derivatives, Integrals\n• **Geometry:** Proofs, Constructions\n• **Statistics:** Probability, Analysis\n• **Step-by-Step:** Clear explanations\n\n**What math problem do you need solved?**";
-    }
-
-    // === PROGRAMMING ===
-    if (query.contains('programming') || query.contains('code') || query.contains('software') || query.contains('python') || query.contains('java') || query.contains('flutter') || query.contains('debug')) {
-      return "**💻 Programming & Code Engineering**\n\nI can help with:\n\n• **Code Writing:** Python, Java, JavaScript, Flutter, C++\n• **Debugging:** Find and fix errors\n• **Code Translation:** Convert between languages\n• **Algorithm Optimization:** Improve performance\n• **Project Architecture:** Best practices\n\n**What programming help do you need?**";
-    }
-
-    // === BUSINESS ===
-    if (query.contains('business') || query.contains('marketing') || query.contains('startup') || query.contains('entrepreneur')) {
-      return "**💼 Business Strategy & Development**\n\nI can help with:\n\n• **Business Plans:** Comprehensive structure\n• **Marketing Strategies:** Target audience, channels\n• **SWOT Analysis:** Strengths, weaknesses, opportunities\n• **Compliance Check:** Feasibility assessment\n• **Brand Development:** Identity and positioning\n\n**What business aspect do you need help with?**";
-    }
-
-    // === POWERPOINT ===
-    if (query.contains('powerpoint') || query.contains('ppt') || query.contains('presentation') || query.contains('slides')) {
-      return "**📊 Professional Presentation Creation**\n\nI can create PowerPoint presentations with:\n\n• **Structured Content:** Clear bullet points\n• **Professional Titles:** Engaging headings\n• **Organized Flow:** Logical progression\n• **Visual Suggestions:** Chart and image ideas\n\n**Tell me your presentation topic!**";
-    }
-
     // === THANK YOU ===
     if (query.contains('thank') || query.contains('thanks') || query.contains('شکریہ')) {
       return "You're welcome! Let me know if you need anything else.";
     }
 
     // === DEFAULT RESPONSE (DIRECT & HELPFUL - NO GENERIC MENU) ===
-    return "I'm here to provide instant, accurate solutions.\n\n**I can help with:**\n• Answering questions\n• Writing & content creation\n• Study & research\n• Programming & debugging\n• Business strategy\n• Document analysis\n• And much more\n\n**Could you provide more details about what you need?**";
+    return "I'm here to provide accurate solutions across all fields.\n\n**I can help with:**\n• Answering questions\n• Education & homework\n• Writing & content\n• Business strategy\n• Programming & debugging\n• File analysis\n• And much more\n\n**Could you provide more details about what you need?**";
   }
 
   void _handleSubmitted(String text) {
@@ -242,6 +250,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _textController.clear();
     setState(() {
       _messages.insert(0, ChatMessage(text: text, isUser: true));
+      _isFirstMessage = false;
     });
     
     // Brief delay for natural feel
@@ -278,7 +287,7 @@ class _ChatScreenState extends State<ChatScreen> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text("📎 Upload files (PDF, DOCX, Images) for analysis"),
+                  content: Text("📎 Upload PDF, DOCX, Images for analysis"),
                   duration: Duration(seconds: 2),
                 ),
               );
@@ -289,10 +298,11 @@ class _ChatScreenState extends State<ChatScreen> {
               controller: _textController,
               onSubmitted: _handleSubmitted,
               decoration: const InputDecoration.collapsed(
-                hintText: "Ask me anything...",
+                hintText: "Ask what you need...",
               ),
               maxLines: null,
               textCapitalization: TextCapitalization.sentences,
+              style: const TextStyle(fontSize: 16),
             ),
           ),
           IconButton(
@@ -335,21 +345,26 @@ class _ChatScreenState extends State<ChatScreen> {
                   title: const Text('SMART AI'),
                   content: const SingleChildScrollView(
                     child: Text(
-                      '🚀 SMART AI — The Ultimate AI Assistant\n\n'
+                      '🌍 SMART AI — Universal Assistant\n\n'
                       'Developed by:\n'
                       'Sardar Muhammad Adeel Ashraf\n\n'
-                      '🌟 Pioneer-Grade Capabilities:\n'
+                      '"One assistant. All answers. Free for everyone, everywhere."\n\n'
+                      '✅ 100% Free — No charges, no upgrades, no limits\n'
+                      '✅ Most Accessible — Works in English, Urdu, Punjabi\n'
+                      '✅ Most Helpful — Covers every field: education, business, coding, design, writing, research\n'
+                      '✅ Most Unique — Offers tools and logic no other AI assistant provides\n'
+                      '✅ Most Easy to Use — One-line answers, one-tap tools, zero confusion\n\n'
+                      '🛠️ Unique Features:\n'
                       '• Creative Logic Mapping (CLM)\n'
                       '• Emotional Tone Analysis (ETA)\n'
                       '• Global Compliance Quick-Check (GCQC)\n'
-                      '• Text Optimization & SEO\n'
-                      '• Document Engineering\n'
-                      '• Advanced Programming Help\n'
-                      '• Business Strategy & SWOT Analysis\n'
-                      '• Multilingual Support (5+ languages)\n'
-                      '• Image, Video & Audio Generation\n\n'
-                      'Operating at Pioneer-Grade intelligence level — offering unique solutions that surpass typical Pro/Paid AI models, completely FREE.\n\n'
-                      'Version: 2.0.0 (Pioneer Edition)',
+                      '• PDF to Word Conversion\n'
+                      '• Automated Data Extraction\n'
+                      '• Code Translation & Debugging\n'
+                      '• Image, Banner & Flowchart Generation\n'
+                      '• SWOT & Comparative Analysis\n'
+                      '• And 12+ more advanced tools\n\n'
+                      'Version: 3.0.0 (Universal Edition)',
                     ),
                   ),
                   actions: [
@@ -480,7 +495,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 Text(
                   message.text,
-                  style: TextStyle(color: textColor, fontSize: 15),
+                  style: TextStyle(color: textColor, fontSize: 16),
                 ),
               ],
             ),
