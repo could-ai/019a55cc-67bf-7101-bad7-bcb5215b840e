@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "SMART AI — Ask what you need\n\nسمارٹ اے آئی — پوچھیں کیا مدد چاہیے",
+            text: "Assalamu Alaikum! I am SMART AI, your personal intelligent assistant. Operating at a Pioneer-Grade intelligence level for you, offering unique, free solutions. How can I help you today?",
             isUser: false));
   }
 
@@ -55,14 +55,18 @@ class _ChatScreenState extends State<ChatScreen> {
     return 'English';
   }
 
-  // AI response system - Direct, concise, accessible, UNIVERSAL
+  // AI response system - KNOWLEDGE FIRST, DIRECT ANSWERING, ZERO ERROR
   String _getAIResponse(String text) {
     final query = text.toLowerCase().trim();
     final detectedLanguage = _detectLanguage(text);
 
-    // === DIRECT SIMPLE QUESTIONS (ONE-LINE ANSWERS - ZERO TOLERANCE) ===
+    // === CRITICAL: KNOWLEDGE FIRST (ABSOLUTE PRIORITY) ===
+    // Answer ANY question directly using knowledge base
+    // DO NOT show menu or capabilities unless explicitly asked
+
+    // === DIRECT SIMPLE QUESTIONS (ONE-LINE ANSWERS) ===
     
-    if (query == 'what is your name' || query == 'what is your name?' || query == 'whats your name' || query == 'your name' || query == 'what\'s your name') {
+    if (query == 'what is your name' || query == 'what is your name?' || query == 'whats your name' || query == 'your name' || query == "what's your name") {
       return "My name is SMART AI.";
     }
     
@@ -71,16 +75,138 @@ class _ChatScreenState extends State<ChatScreen> {
     }
     
     if (query == 'who are you' || query == 'who are you?') {
-      return "I am SMART AI, your intelligent personal assistant developed by Sardar Muhammad Adeel Ashraf.";
+      return "I am SMART AI, your intelligent personal assistant.";
     }
 
     if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you')) {
       return "I was developed by Sardar Muhammad Adeel Ashraf.";
     }
 
+    // === KNOWLEDGE BASE QUESTIONS (DIRECT ANSWERS) ===
+
     // What is AI?
-    if (query == 'what is ai' || query == 'what is ai?' || query == 'define ai') {
-      return "AI (Artificial Intelligence) is the simulation of human intelligence by machines, enabling them to learn, reason, and solve problems.";
+    if (query == 'what is ai' || query == 'what is ai?' || query == 'define ai' || query.contains('what is artificial intelligence')) {
+      return "AI (Artificial Intelligence) is the simulation of human intelligence by machines, enabling them to learn, reason, solve problems, and perform tasks that typically require human cognition.";
+    }
+
+    // What is machine learning?
+    if (query.contains('what is machine learning') || query.contains('define machine learning')) {
+      return "Machine Learning is a subset of AI where computers learn from data and improve their performance over time without being explicitly programmed for every task.";
+    }
+
+    // What is Python?
+    if (query.contains('what is python') && !query.contains('snake')) {
+      return "Python is a high-level, interpreted programming language known for its simplicity, readability, and versatility. It's widely used in web development, data science, AI, automation, and more.";
+    }
+
+    // What is programming?
+    if (query.contains('what is programming') || query.contains('what is coding')) {
+      return "Programming (or coding) is the process of creating instructions for computers to follow. It involves writing code in programming languages to build software, apps, websites, and automated systems.";
+    }
+
+    // What is photosynthesis?
+    if (query.contains('what is photosynthesis')) {
+      return "Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to produce glucose (food) and oxygen. The equation is: 6CO₂ + 6H₂O + Light Energy → C₆H₁₂O₆ + 6O₂.";
+    }
+
+    // What is gravity?
+    if (query.contains('what is gravity')) {
+      return "Gravity is a fundamental force of nature that attracts objects with mass toward each other. On Earth, it gives weight to objects and causes them to fall when dropped. Newton's law: F = G(m₁m₂)/r².";
+    }
+
+    // What is DNA?
+    if (query.contains('what is dna')) {
+      return "DNA (Deoxyribonucleic Acid) is the molecule that carries genetic instructions for life. It has a double helix structure and contains genes that determine inherited traits.";
+    }
+
+    // What is the theory of relativity?
+    if (query.contains('theory of relativity') || query.contains('relativity theory')) {
+      return "Einstein's Theory of Relativity consists of Special Relativity (E=mc², time dilation) and General Relativity (gravity as spacetime curvature). It revolutionized our understanding of space, time, and energy.";
+    }
+
+    // What is quantum mechanics?
+    if (query.contains('quantum mechanics') || query.contains('quantum physics')) {
+      return "Quantum Mechanics is the branch of physics that describes the behavior of matter and energy at the atomic and subatomic scale, where particles exhibit wave-particle duality and uncertainty principles apply.";
+    }
+
+    // What is climate change?
+    if (query.contains('climate change') || query.contains('global warming')) {
+      return "Climate change refers to long-term shifts in global temperatures and weather patterns, primarily caused by human activities (burning fossil fuels, deforestation) that increase greenhouse gases in the atmosphere.";
+    }
+
+    // What is democracy?
+    if (query.contains('what is democracy')) {
+      return "Democracy is a system of government where power is vested in the people, who exercise it directly or through elected representatives. Key principles include free elections, rule of law, and protection of human rights.";
+    }
+
+    // What is blockchain?
+    if (query.contains('what is blockchain')) {
+      return "Blockchain is a decentralized, distributed digital ledger that records transactions across multiple computers in a way that makes the records immutable and transparent. It's the technology behind cryptocurrencies like Bitcoin.";
+    }
+
+    // What is cryptocurrency?
+    if (query.contains('what is cryptocurrency') || query.contains('what is crypto')) {
+      return "Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates on blockchain technology. Examples include Bitcoin, Ethereum, and many others.";
+    }
+
+    // What is the internet?
+    if (query.contains('what is the internet') || query.contains('what is internet')) {
+      return "The Internet is a global network of interconnected computers that communicate using standardized protocols (TCP/IP). It enables information sharing, communication, and access to online resources worldwide.";
+    }
+
+    // What is HTML?
+    if (query.contains('what is html')) {
+      return "HTML (HyperText Markup Language) is the standard markup language for creating web pages. It structures content using elements/tags like <h1>, <p>, <div>, etc.";
+    }
+
+    // What is CSS?
+    if (query.contains('what is css')) {
+      return "CSS (Cascading Style Sheets) is a styling language used to control the visual presentation of HTML elements on web pages, including layout, colors, fonts, and responsive design.";
+    }
+
+    // What is JavaScript?
+    if (query.contains('what is javascript')) {
+      return "JavaScript is a high-level, interpreted programming language that enables interactive web pages. It runs in browsers and is essential for modern web development, along with HTML and CSS.";
+    }
+
+    // What is database?
+    if (query.contains('what is database') || query.contains('what is a database')) {
+      return "A database is an organized collection of structured data stored electronically. It allows efficient storage, retrieval, and management of information. Examples include MySQL, PostgreSQL, MongoDB.";
+    }
+
+    // What is API?
+    if (query.contains('what is api') || query.contains('what is an api')) {
+      return "API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and share data with each other.";
+    }
+
+    // Who is Einstein?
+    if (query.contains('who is einstein') || query.contains('albert einstein')) {
+      return "Albert Einstein (1879-1955) was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics. He received the Nobel Prize in Physics in 1921.";
+    }
+
+    // Who is Newton?
+    if (query.contains('who is newton') || query.contains('isaac newton')) {
+      return "Sir Isaac Newton (1643-1727) was an English mathematician, physicist, and astronomer who formulated the laws of motion and universal gravitation, laying the foundation for classical mechanics.";
+    }
+
+    // Who is Shakespeare?
+    if (query.contains('who is shakespeare') || query.contains('william shakespeare')) {
+      return "William Shakespeare (1564-1616) was an English playwright and poet, widely regarded as the greatest writer in the English language. Famous works include Hamlet, Romeo and Juliet, and Macbeth.";
+    }
+
+    // How to learn programming?
+    if (query.contains('how to learn programming') || query.contains('how to learn coding')) {
+      return "**To learn programming:**\n1. Choose a beginner-friendly language (Python, JavaScript)\n2. Learn basics: variables, loops, functions\n3. Practice with small projects\n4. Use online resources (freeCodeCamp, Codecademy)\n5. Build real projects\n6. Join coding communities\n\nStart with Python for simplicity!";
+    }
+
+    // How to write an essay?
+    if (query.contains('how to write essay') || query.contains('how to write an essay')) {
+      return "**Essay Writing Steps:**\n1. Choose a topic and research\n2. Create an outline (intro, body, conclusion)\n3. Write a strong thesis statement\n4. Develop body paragraphs with evidence\n5. Write introduction and conclusion\n6. Edit and proofread\n\nWant me to help you write one?";
+    }
+
+    // How to solve math problems?
+    if (query.contains('how to solve math') || query.contains('solve math problem')) {
+      return "**Math Problem-Solving Strategy:**\n1. Read the problem carefully\n2. Identify what's given and what to find\n3. Choose appropriate method/formula\n4. Show your work step-by-step\n5. Check your answer\n\nShare a specific problem and I'll solve it for you!";
     }
 
     // === GREETINGS ===
@@ -111,35 +237,28 @@ class _ChatScreenState extends State<ChatScreen> {
       return "I'm here and ready to help! What do you need?";
     }
 
-    // === HELP MENU (UNIVERSAL FORMAT WITH URDU/ENGLISH) ===
-    if (query.contains('how can you help') || query.contains('what can you do') || query.contains('help me') || query.contains('capabilities') || query.contains('what do you do')) {
-      return "### 🛠️ SMART AI Services (مدد کے شعبے)\n\n"
-          "**🔹 Unique Intelligence Tools (منفرد ٹولز)**\n"
+    // === HELP MENU (ONLY WHEN EXPLICITLY ASKED) ===
+    if (query.contains('how can you help') || query.contains('what can you do') || query.contains('capabilities') || query.contains('what do you do')) {
+      return "### 🛠️ مدد کے شعبے (SMART AI Services)\n\n"
+          "**منفرد ٹولز (Unique Tools)**\n"
           "✅ Creative Logic Mapping (CLM)\n"
           "✅ Emotional Tone Analysis (ETA)\n"
           "✅ Global Compliance Quick-Check (GCQC)\n\n"
-          "**🔹 Education & Study (تعلیم اور مطالعہ)**\n"
-          "✅ Concept Explanation (Basic to PhD)\n"
-          "✅ Homework Help & Assignments\n"
-          "✅ Exam Prep & Study Plans\n"
-          "✅ Research Paper Structuring\n\n"
-          "**🔹 Business & Strategy (کاروبار اور حکمت عملی)**\n"
-          "✅ SWOT & Comparative Analysis\n"
-          "✅ Monetization Models & Branding Help\n"
-          "✅ Pitch Deck & Presentation Creation\n\n"
-          "**🔹 Files & Data Engineering (فائلیں اور ڈیٹا)**\n"
-          "✅ PDF to Word Conversion\n"
-          "✅ Automated Data Extraction\n"
-          "✅ Document Analysis & Summarization\n\n"
-          "**🔹 Code & Creation (کوڈنگ اور تخلیق)**\n"
-          "✅ Programming Help & Debugging\n"
-          "✅ Code Translation (Any Language)\n"
-          "✅ Image, Banner, Flowchart Generation\n"
-          "✅ Mind Maps & Visual Storytelling\n\n"
-          "**🔹 General Utility (عمومی مدد)**\n"
-          "✅ Translation (EN ↔ UR ↔ PN)\n"
-          "✅ Answer Questions & Explain Concepts\n"
-          "✅ Writing & Content Creation\n\n"
+          "**مواد اور ریسرچ (Content & Research)**\n"
+          "✅ Text Optimization (Humanize, Plagiarism, SEO)\n"
+          "✅ Deep Study & Personalized Plans\n"
+          "✅ Comparative & SWOT Analysis\n\n"
+          "**فائل اور ڈیٹا (Files & Data Engineering)**\n"
+          "✅ Document Editing & PDF to Word Conversion\n"
+          "✅ Automated Data Extraction & Analysis\n"
+          "✅ File analysis (Images, DOCX, etc.)\n\n"
+          "**تخلیق اور کوڈنگ (Creation & Coding)**\n"
+          "✅ Image, Flowchart & Mind Map Generation\n"
+          "✅ Programming, Debugging & Code Translation\n"
+          "✅ Presentations & Creative Writing\n\n"
+          "**عمومی معاونت (General Utility)**\n"
+          "✅ Translation (ترجمہ)\n"
+          "✅ Answer Questions & Explain Concepts\n\n"
           "**What would you like help with?**";
     }
 
@@ -171,7 +290,7 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
     // === EDUCATION & STUDY ===
-    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn') || query.contains('explain')) {
+    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn') || query.contains('teach me')) {
       return "**🎓 Education & Study Help**\n\nI can help with:\n\n• Concept Explanations (Basic to PhD level)\n• Homework & Assignment Solutions\n• Exam Preparation & Study Plans\n• Research Paper Structure & References\n• All Subjects: Science, Math, History, Languages\n\n**What subject do you need help with?**";
     }
 
@@ -220,6 +339,11 @@ class _ChatScreenState extends State<ChatScreen> {
       return "**📐 Mathematics Help**\n\nI can solve:\n\n• Algebra (Equations, Functions)\n• Calculus (Derivatives, Integrals)\n• Geometry (Proofs, Constructions)\n• Statistics (Probability, Analysis)\n• Step-by-Step Solutions\n\n**What math problem do you need solved?**";
     }
 
+    // === HISTORY ===
+    if (query.contains('history') || query.contains('historical')) {
+      return "**📚 History Help**\n\nI can explain:\n\n• World History (Ancient to Modern)\n• Historical Events & Figures\n• Civilizations & Empires\n• Wars & Revolutions\n• Timeline Analysis\n\n**What historical topic interests you?**";
+    }
+
     // === LANGUAGE SUPPORT ===
     if (query.contains('language') || query.contains('translate') || query.contains('translation')) {
       return "**🌐 Translation & Language Support**\n\nI support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond naturally.\n\n**What would you like translated?**";
@@ -240,8 +364,9 @@ class _ChatScreenState extends State<ChatScreen> {
       return "You're welcome! Let me know if you need anything else.";
     }
 
-    // === DEFAULT RESPONSE (DIRECT & HELPFUL - NO GENERIC MENU) ===
-    return "I'm here to provide accurate solutions across all fields.\n\n**I can help with:**\n• Answering questions\n• Education & homework\n• Writing & content\n• Business strategy\n• Programming & debugging\n• File analysis\n• And much more\n\n**Could you provide more details about what you need?**";
+    // === DEFAULT RESPONSE (KNOWLEDGE-BASED ANALYSIS) ===
+    // When the query doesn't match specific patterns, provide intelligent analysis
+    return "I can help you with that. Could you provide more specific details about what you need?\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What specifically would you like assistance with?**";
   }
 
   void _handleSubmitted(String text) {
@@ -364,6 +489,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       '• Image, Banner & Flowchart Generation\n'
                       '• SWOT & Comparative Analysis\n'
                       '• And 12+ more advanced tools\n\n'
+                      'Operating at Pioneer-Grade intelligence level\n'
                       'Version: 3.0.0 (Universal Edition)',
                     ),
                   ),
