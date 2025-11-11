@@ -34,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "Assalamu Alaikum! I am SMART AI, your personal intelligent assistant. Operating at a Pioneer-Grade intelligence level for you, offering unique, free solutions. How can I help you today?",
+            text: "SMART AI — Ask what you need\n\nسمارٹ اے آئی — پوچھیں کیا مدد چاہیے",
             isUser: false));
   }
 
@@ -423,7 +423,7 @@ class _ChatScreenState extends State<ChatScreen> {
               controller: _textController,
               onSubmitted: _handleSubmitted,
               decoration: const InputDecoration.collapsed(
-                hintText: "Ask what you need...",
+                hintText: "Ask anything...",
               ),
               maxLines: null,
               textCapitalization: TextCapitalization.sentences,
@@ -489,7 +489,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       '• Image, Banner & Flowchart Generation\n'
                       '• SWOT & Comparative Analysis\n'
                       '• And 12+ more advanced tools\n\n'
-                      'Operating at Pioneer-Grade intelligence level\n'
+                      'Operating with hundreds of billions of verified knowledge points\n'
                       'Version: 3.0.0 (Universal Edition)',
                     ),
                   ),
