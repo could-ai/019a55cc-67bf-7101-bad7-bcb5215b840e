@@ -78,8 +78,9 @@ class _ChatScreenState extends State<ChatScreen> {
       return "I am SMART AI, your intelligent personal assistant.";
     }
 
-    if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you')) {
-      return "I was developed by Sardar Muhammad Adeel Ashraf.";
+    // Meta-questions about development (use + SMART AI style)
+    if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you') || query.contains('how developed') || query.contains('how were you')) {
+      return "+ SMART AI\n\nI was developed by Sardar Muhammad Adeel Ashraf.\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What would you like help with?**";
     }
 
     // === KNOWLEDGE BASE QUESTIONS (DIRECT ANSWERS) ===
@@ -265,23 +266,23 @@ class _ChatScreenState extends State<ChatScreen> {
     // === UNIQUE PIONEER TOOLS ===
 
     // Creative Logic Mapping (CLM)
-    if (query.contains('creative logic') || query.contains('clm') || query.contains('project plan') || query.contains('gantt') || query.contains('timeline')) {
-      return "**📊 Creative Logic Mapping (CLM)**\n\nI can turn your idea, concept, or project into a structured plan with timeline.\n\n**How to use:**\n1. Share your idea or goal\n2. I'll break it into phases\n3. Create a timeline with milestones\n4. Define actionable steps\n\n**Example:** \"I want to launch an online store\" → I'll map out a 3-month plan with tasks.\n\n**Tell me your idea!**";
+    if (query.contains('creative logic') || query.contains('clm') || query.contains('map out a business') || query.contains('project plan') || query.contains('gantt') || query.contains('timeline')) {
+      return "**📊 Creative Logic Mapping (CLM)**\n\nI can turn your idea, concept, or project into a structured plan with timeline.\n\n**How to use:**\n1. Share your idea or goal\n2. I'll break it into phases\n3. Create a timeline with milestones\n4. Define actionable steps\n\n**Example:** \"Map out a business plan: I want to launch an online store\" → I'll create a 3-month plan with tasks.\n\n**Tell me your idea!**";
     }
 
     // Emotional Tone Analysis (ETA)
-    if (query.contains('emotional tone') || query.contains('eta') || query.contains('tone analysis') || query.contains('improve writing')) {
-      return "**🎭 Emotional Tone Analysis (ETA)**\n\nI can analyze any text and assess its emotional impact, then suggest revisions.\n\n**Emotions I analyze:**\n• Persuasive vs. Passive\n• Professional vs. Casual\n• Sympathetic vs. Assertive\n• Optimistic vs. Pessimistic\n\n**Example:** Paste an email draft → I'll tell you if it sounds too harsh or too weak, and rewrite it.\n\n**Paste your text!**";
+    if (query.contains('emotional tone') || query.contains('eta') || query.contains('tone analysis') || query.contains('analyze tone')) {
+      return "**🎭 Emotional Tone Analysis (ETA)**\n\nI can analyze any text and assess its emotional impact, then suggest revisions.\n\n**Emotions I analyze:**\n• Persuasive vs. Passive\n• Professional vs. Casual\n• Sympathetic vs. Assertive\n• Optimistic vs. Pessimistic\n\n**Example:** \"Analyze tone in this text: [Paste email]\" → I'll tell you if it sounds too harsh or too weak, and rewrite it.\n\n**Paste your text!**";
     }
 
     // Global Compliance Quick-Check (GCQC)
-    if (query.contains('compliance') || query.contains('gcqc') || query.contains('feasibility') || query.contains('business risk') || query.contains('validate idea')) {
-      return "**🌍 Global Compliance Quick-Check (GCQC)**\n\nI can validate your business idea against global standards.\n\n**I check for:**\n✓ Market feasibility\n✓ Basic regulatory concerns\n✓ Risk assessment\n✓ Compliance red flags\n\n**Example:** \"I want to sell health supplements online\" → I'll identify regulations, risks, and next steps.\n\n**Describe your business idea!**";
+    if (query.contains('compliance') || query.contains('gcqc') || query.contains('check if this action complies') || query.contains('feasibility') || query.contains('business risk') || query.contains('validate idea')) {
+      return "**🌍 Global Compliance Quick-Check (GCQC)**\n\nI can validate your business idea against global standards.\n\n**I check for:**\n✓ Market feasibility\n✓ Basic regulatory concerns\n✓ Risk assessment\n✓ Compliance red flags\n\n**Example:** \"Check if this action complies with US laws: I want to sell health supplements online\" → I'll identify regulations, risks, and next steps.\n\n**Describe your business idea!**";
     }
 
     // SWOT Analysis
-    if (query.contains('swot') || query.contains('swot analysis') || query.contains('comparative analysis')) {
-      return "**📈 SWOT & Comparative Analysis**\n\nI can analyze:\n• Business ideas\n• Products/Services\n• Career decisions\n• Market positioning\n\n**SWOT Structure:**\n✓ Strengths\n✓ Weaknesses\n✓ Opportunities\n✓ Threats\n\n**Tell me what to analyze!**";
+    if (query.contains('swot') || query.contains('swot analysis') || query.contains('comparative analysis') || query.contains('do a swot')) {
+      return "**📈 SWOT & Comparative Analysis**\n\nI can analyze:\n• Business ideas\n• Products/Services\n• Career decisions\n• Market positioning\n\n**SWOT Structure:**\n✓ Strengths\n✓ Weaknesses\n✓ Opportunities\n✓ Threats\n\n**Example:** \"Do a SWOT for my startup: [Describe startup]\"\n\n**Tell me what to analyze!**";
     }
 
     // SEO & Content Optimization
@@ -289,9 +290,19 @@ class _ChatScreenState extends State<ChatScreen> {
       return "**✍️ Text Optimization**\n\nI can help with:\n\n📌 SEO Keyword Analysis\n📌 Humanize AI-generated content\n📌 Plagiarism removal & rewriting\n📌 Readability improvement\n\n**What content needs optimization?**";
     }
 
+    // PDF to Word Conversion
+    if (query.contains('pdf to word') || query.contains('convert pdf') || query.contains('pdf conversion')) {
+      return "**📄 PDF to Word Conversion**\n\nI can help convert PDF content to editable Word format.\n\n**How to use:**\n1. Describe the PDF content or provide key sections\n2. I'll extract and format the text\n3. Provide editable content structure\n\n**Example:** \"Convert this PDF summary: [Describe content]\"\n\n**Note:** Full file conversion requires backend integration.\n\n**What PDF content do you need converted?**";
+    }
+
+    // Data Extraction
+    if (query.contains('data extraction') || query.contains('extract key data') || query.contains('extract data') || query.contains('invoice data') || query.contains('table data')) {
+      return "**📊 Automated Data Extraction**\n\nI can extract structured data from:\n• Tables\n• Invoices\n• Forms\n• Documents\n• Images (with text)\n\n**Example:** \"Extract key data from this table: [Paste table]\"\n\n**Paste your data source!**";
+    }
+
     // === EDUCATION & STUDY ===
-    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn') || query.contains('teach me')) {
-      return "**🎓 Education & Study Help**\n\nI can help with:\n\n• Concept Explanations (Basic to PhD level)\n• Homework & Assignment Solutions\n• Exam Preparation & Study Plans\n• Research Paper Structure & References\n• All Subjects: Science, Math, History, Languages\n\n**What subject do you need help with?**";
+    if (query.contains('education') || query.contains('study') || query.contains('homework') || query.contains('exam') || query.contains('assignment') || query.contains('learn') || query.contains('teach me') || query.contains('study plan')) {
+      return "**🎓 Education & Study Help**\n\nI can help with:\n\n• Concept Explanations (Basic to PhD level)\n• Homework & Assignment Solutions\n• Exam Preparation & Study Plans\n• Research Paper Structure & References\n• All Subjects: Science, Math, History, Languages\n\n**Example:** \"Create a study plan for math: [Specify topic]\"\n\n**What subject do you need help with?**";
     }
 
     // === WRITING & CONTENT ===
@@ -305,18 +316,18 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
     // === FILE PROCESSING ===
-    if (query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('upload') || query.contains('analyze') || query.contains('data extraction') || query.contains('convert')) {
+    if (query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('upload') || query.contains('analyze') || query.contains('convert')) {
       return "**📂 Files & Data Engineering**\n\nI can:\n\n• Analyze PDF, DOCX, Images\n• PDF to Word Conversion\n• Automated Data Extraction (Invoices, Tables)\n• Document Summarization\n• File Analysis\n\n**Click the 📎 icon to upload files!**";
     }
 
     // === PROGRAMMING ===
     if (query.contains('programming') || query.contains('code') || query.contains('software') || query.contains('python') || query.contains('java') || query.contains('flutter') || query.contains('debug') || query.contains('translate code')) {
-      return "**💻 Programming & Code Help**\n\nI can help with:\n\n• Code Writing (Python, Java, JavaScript, Flutter, C++)\n• Debugging & Error Fixing\n• Code Translation (Convert between languages)\n• Algorithm Optimization\n• Project Architecture\n\n**What programming help do you need?**";
+      return "**💻 Programming & Code Help**\n\nI can help with:\n\n• Code Writing (Python, Java, JavaScript, Flutter, C++)\n• Debugging & Error Fixing\n• Code Translation (Convert between languages)\n• Algorithm Optimization\n• Project Architecture\n\n**Example:** \"Debug this Python code: [Paste code]\"\n\n**What programming help do you need?**";
     }
 
     // === IMAGE GENERATION ===
-    if (query.contains('image') || query.contains('picture') || query.contains('photo') || query.contains('draw') || query.contains('banner') || query.contains('flowchart') || query.contains('mind map')) {
-      return "**🎨 Visual Content Generation**\n\nI can generate:\n\n• AI Images & Banners\n• Flowcharts (Process visualization)\n• Mind Maps (Concept organization)\n• Diagrams & Illustrations\n\n**Note:** Full visual generation available with backend integration.\n\n**Describe what you want to create!**";
+    if (query.contains('image') || query.contains('picture') || query.contains('photo') || query.contains('draw') || query.contains('banner') || query.contains('flowchart') || query.contains('mind map') || query.contains('generate a flowchart')) {
+      return "**🎨 Visual Content Generation**\n\nI can generate:\n\n• AI Images & Banners\n• Flowcharts (Process visualization)\n• Mind Maps (Concept organization)\n• Diagrams & Illustrations\n\n**Example:** \"Generate a flowchart for this process: [Describe process]\"\n\n**Note:** Full visual generation available with backend integration.\n\n**Describe what you want to create!**";
     }
 
     // === VIDEO GENERATION ===
@@ -346,7 +357,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // === LANGUAGE SUPPORT ===
     if (query.contains('language') || query.contains('translate') || query.contains('translation')) {
-      return "**🌐 Translation & Language Support**\n\nI support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond naturally.\n\n**What would you like translated?**";
+      return "**🌐 Translation & Language Support**\n\nI support:\n\n🇵🇰 Pakistani Urdu\n🇮🇳 Indian Urdu\n🇵🇰 Pakistani Punjabi\n🇮🇳 Indian Punjabi\n🇬🇧 English\n\nI automatically detect your language and respond naturally.\n\n**Example:** \"Explain quantum physics in Urdu: [Specify concept]\"\n\n**What would you like translated?**";
     }
 
     // === URDU RESPONSES ===
@@ -366,7 +377,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // === DEFAULT RESPONSE (KNOWLEDGE-BASED ANALYSIS) ===
     // When the query doesn't match specific patterns, provide intelligent analysis
-    return "I can help you with that. Could you provide more specific details about what you need?\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What specifically would you like assistance with?**";
+    return "+ SMART AI\n\nI can help you with that. Could you provide more specific details about what you need?\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What specifically would you like assistance with?**";
   }
 
   void _handleSubmitted(String text) {
