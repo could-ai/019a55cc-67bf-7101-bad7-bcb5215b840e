@@ -78,12 +78,12 @@ class _ChatScreenState extends State<ChatScreen> {
       return "I am SMART AI, your intelligent personal assistant.";
     }
 
-    // Meta-questions about development (use + SMART AI style)
-    if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you') || query.contains('how developed') || query.contains('how were you')) {
-      return "+ SMART AI\n\nI was developed by Sardar Muhammad Adeel Ashraf.\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What would you like help with?**";
-    }
-
     // === KNOWLEDGE BASE QUESTIONS (DIRECT ANSWERS) ===
+
+    // What is education?
+    if (query.contains('what is education')) {
+      return "Education is the process of facilitating learning, acquiring knowledge, skills, values, beliefs, and habits through teaching, training, research, or experience.";
+    }
 
     // What is AI?
     if (query == 'what is ai' || query == 'what is ai?' || query == 'define ai' || query.contains('what is artificial intelligence')) {
@@ -180,6 +180,31 @@ class _ChatScreenState extends State<ChatScreen> {
       return "API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and share data with each other.";
     }
 
+    // What is medicine?
+    if (query.contains('what is medicine')) {
+      return "Medicine is the science and practice of diagnosing, treating, and preventing disease. It encompasses pharmaceuticals, medical procedures, and healthcare practices to maintain and restore health.";
+    }
+
+    // What is law?
+    if (query.contains('what is law')) {
+      return "Law is a system of rules created and enforced through social or governmental institutions to regulate behavior, maintain order, and protect rights and freedoms within a society.";
+    }
+
+    // What is religion?
+    if (query.contains('what is religion')) {
+      return "Religion is a system of faith, beliefs, and practices centered around the worship of a higher power or deity, providing moral guidance, community, and spiritual meaning to life.";
+    }
+
+    // What is art?
+    if (query.contains('what is art')) {
+      return "Art is the expression of human creativity and imagination through visual, auditory, or performance mediums. It encompasses painting, sculpture, music, literature, dance, and more.";
+    }
+
+    // What is science?
+    if (query.contains('what is science')) {
+      return "Science is the systematic study of the natural world through observation, experimentation, and analysis to discover laws and principles that govern physical and biological phenomena.";
+    }
+
     // Who is Einstein?
     if (query.contains('who is einstein') || query.contains('albert einstein')) {
       return "Albert Einstein (1879-1955) was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics. He received the Nobel Prize in Physics in 1921.";
@@ -208,6 +233,11 @@ class _ChatScreenState extends State<ChatScreen> {
     // How to solve math problems?
     if (query.contains('how to solve math') || query.contains('solve math problem')) {
       return "**Math Problem-Solving Strategy:**\n1. Read the problem carefully\n2. Identify what's given and what to find\n3. Choose appropriate method/formula\n4. Show your work step-by-step\n5. Check your answer\n\nShare a specific problem and I'll solve it for you!";
+    }
+
+    // === META-QUESTIONS (+ SMART AI STYLE) ===
+    if (query.contains('who developed you') || query.contains('who created you') || query.contains('who made you') || query.contains('how developed') || query.contains('how were you') || query.contains('who built')) {
+      return "+ SMART AI\n\nI was developed by Sardar Muhammad Adeel Ashraf.\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What would you like help with?**";
     }
 
     // === GREETINGS ===
@@ -375,7 +405,7 @@ class _ChatScreenState extends State<ChatScreen> {
       return "You're welcome! Let me know if you need anything else.";
     }
 
-    // === DEFAULT RESPONSE (KNOWLEDGE-BASED ANALYSIS) ===
+    // === DEFAULT RESPONSE (+ SMART AI STYLE) ===
     // When the query doesn't match specific patterns, provide intelligent analysis
     return "+ SMART AI\n\nI can help you with that. Could you provide more specific details about what you need?\n\n**I excel at:**\n• Answering knowledge questions\n• Solving problems step-by-step\n• Creating content (essays, code, designs)\n• Analyzing data and documents\n• Strategic planning and research\n\n**What specifically would you like assistance with?**";
   }
