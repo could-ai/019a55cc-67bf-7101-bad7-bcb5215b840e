@@ -54,212 +54,68 @@ class _ChatScreenState extends State<ChatScreen> {
     return 'English';
   }
 
-  // Ultra-advanced AI response system with maximum depth and intelligence
+  // Human-like, highly advanced AI response system
   String _getAIResponse(String text) {
     final query = text.toLowerCase().trim();
     final detectedLanguage = _detectLanguage(text);
 
-    // CORE INTELLIGENCE BEHAVIOR:
-    // 1. Fully understand query: Identify core problem, hidden details, missing context
-    // 2. Step-by-step deep logical reasoning
-    // 3. Combine knowledge from all disciplines
-    // 4. Provide accurate, polished, complete fact-based answers
-    // 5. Never generate placeholders or irrelevant text
-    // 6. No unnecessary follow-up questions
-
-    // ADVANCED PROBLEM-SOLVING ENGINE:
-    // - Identify problem clearly
-    // - Break down into components
-    // - Generate multiple solution paths
-    // - Analyze benefits, risks, alternatives
-    // - Select best final solution
-    // - Present professionally with examples, references, comparisons
-
-    // KNOWLEDGE BEHAVIOR: Vast knowledge (hundreds of trillions units)
-    // - Deep detailed answers
-    // - Expert-level across all fields
-    // - Simple answer first, then deeper detail
-    // - Never say "I don't know" - logical analysis instead
-
-    // LANGUAGE INTELLIGENCE: Auto-detect and reply in user's language
-    // - English, Pakistani Urdu, Indian Urdu, Pakistani Punjabi, Indian Punjabi
-    // - Respectful, natural, clear responses
-
-    // USER-EMPOWERMENT: Clear explanations, breakdowns, steps, alternatives, extra info
-
-    // RESPONSE FORMAT:
-    // 1. Clear, direct solution/explanation
-    // 2. Structured details/steps
-    // 3. Advanced reasoning (optional)
-    // 4. Ask for expansion only if necessary
-
-    // DIRECT ANSWERS - META QUESTIONS
-    if (query.contains('what is your name') || query.contains('whats your name') || query.contains('your name')) {
-      return "I am SMART AI, an ultra-advanced intelligence system designed to provide maximum depth, accuracy, and reasoning across all domains of human knowledge. I operate with access to hundreds of trillions of information units spanning science, technology, history, culture, engineering, mathematics, psychology, philosophy, and all major disciplines.";
-    }
-    
-    if (query.contains('how old are you') || query.contains('what is your age') || query.contains('your age')) {
-      return "As an AI system, I don't have an age in the human sense. My knowledge is continuously updated and synthesized from vast interdisciplinary sources, allowing me to provide the most current and accurate information available. What specific problem can I help you solve today?";
-    }
-    
-    if (query.contains('who are you') || query.contains('who are you?')) {
-      return "I am SMART AI, an ultra-advanced high-intelligence system that analyzes, solves, explains, and optimizes problems across every domain of human knowledge. With access to hundreds of trillions of information units, I combine knowledge from science, technology, history, culture, engineering, linguistics, mathematics, psychology, philosophy, and all major disciplines to deliver the most accurate, reliable, and helpful responses. What challenge can I help you tackle?";
-    }
-
-    // KNOWLEDGE BASE - EDUCATION & LEARNING
-    if (query.contains('what is education')) {
-      return "**Education: Comprehensive Analysis Across Disciplines**\n\n" +
-          "**Direct Definition**: Education is the systematic process of facilitating learning, encompassing the acquisition of knowledge, skills, values, morals, beliefs, habits, and the development of critical thinking.\n\n" +
-          "**Structured Breakdown**:\n" +
-          "• **Cognitive Development**: Builds neural pathways for information processing and problem-solving.\n" +
-          "• **Social Integration**: Transmits cultural norms and facilitates social mobility.\n" +
-          "• **Economic Impact**: Each additional year of education increases income by approximately 10% globally (UNESCO data).\n" +
-          "• **Psychological Benefits**: Enhances self-esteem, motivation, and lifelong learning habits.\n\n" +
-          "**Multiple Solution Paths for Educational Access**:\n" +
-          "• **Formal Education**: Traditional schooling systems (benefits: structured curriculum; risks: potential rigidity).\n" +
-          "• **Self-Directed Learning**: Online platforms like Coursera, Khan Academy (benefits: flexibility; risks: lack of accountability).\n" +
-          "• **Experiential Learning**: Apprenticeships, project-based education (benefits: practical skills; risks: inconsistent quality).\n" +
-          "• **Hybrid Models**: Blended formal and informal approaches (optimal solution: combines structure with adaptability).\n\n" +
-          "**Evidence & References**: Based on extensive research from psychology (Piaget's cognitive stages), economics (human capital theory), and sociology (Bourdieu's cultural capital).\n\n" +
-          "**Advanced Reasoning**: Education serves as the foundation for technological innovation, democratic participation, and sustainable development. In the context of AI advancement, lifelong education becomes crucial for adapting to rapidly changing knowledge landscapes.\n\n" +
-          "What specific educational challenge or aspect would you like me to address in greater depth?";
-    }
-
-    // KNOWLEDGE BASE - SCIENCE (Photosynthesis)
-    if (query.contains('how does photosynthesis work')) {
-      return "**Photosynthesis: Ultra-Detailed Biochemical Process Analysis**\n\n" +
-          "**Direct Solution**: Photosynthesis converts light energy into chemical energy, producing glucose and oxygen through a complex series of enzymatic reactions in plant chloroplasts.\n\n" +
-          "**Step-by-Step Breakdown**:\n" +
-          "1. **Light Absorption**: Chlorophyll molecules in thylakoid membranes capture photons (light energy).\n" +
-          "2. **Water Splitting (Photolysis)**: Light energy splits H₂O into H⁺, electrons, and O₂ gas.\n" +
-          "3. **Electron Transport Chain**: Electrons move through protein complexes, creating ATP and NADPH.\n" +
-          "4. **Calvin Cycle**: CO₂ is fixed into carbohydrates using ATP and NADPH.\n\n" +
-          "**Chemical Equation**: 6CO₂ + 12H₂O + Light Energy → C₆H₁₂O₆ + 6O₂ + 6H₂O\n\n" +
-          "**Multiple Pathways & Variations**:\n" +
-          "• **C3 Photosynthesis**: Most plants; efficient in moderate conditions (benefits: energy-efficient; risks: photorespiration in high temperatures).\n" +
-          "• **C4 Photosynthesis**: Tropical grasses; minimizes photorespiration (benefits: drought tolerance; risks: higher energy cost).\n" +
-          "• **CAM Photosynthesis**: Desert plants; nighttime CO₂ uptake (benefits: water conservation; risks: slower growth).\n" +
-          "• **Artificial Photosynthesis**: Emerging technology using catalysts (optimal for clean energy).\n\n" +
-          "**Benefits & Risks Analysis**:\n" +
-          "• **Global Benefits**: Produces 50% of atmospheric oxygen; foundation of food webs.\n" +
-          "• **Environmental Risks**: Climate change reduces efficiency; deforestation disrupts carbon sequestration.\n\n" +
-          "**References**: Based on Nobel Prize-winning research by Melvin Calvin (Calvin Cycle) and detailed studies in plant biochemistry.\n\n" +
-          "**Advanced Reasoning**: Photosynthesis represents the most efficient natural energy conversion process, with quantum efficiencies approaching 100% under ideal conditions. Understanding this process is crucial for addressing climate change through enhanced carbon capture technologies.\n\n" +
-          "Would you like me to explain related processes like respiration or explore applications in bioenergy?";
-    }
-
-    // KNOWLEDGE BASE - MEDICINE (Cancer)
-    if (query.contains('what is cancer')) {
-      return "**Cancer: Comprehensive Oncological Analysis**\n\n" +
-          "**Direct Definition**: Cancer is a group of diseases characterized by uncontrolled cell growth and division, resulting from genetic mutations that disrupt normal cellular regulation.\n\n" +
-          "**Structured Breakdown**:\n" +
-          "• **Cellular Level**: Mutations in oncogenes (activate growth) or tumor suppressor genes (lose function).\n" +
-          "• **Tissue Level**: Abnormal cell proliferation forming tumors or infiltrating tissues.\n" +
-          "• **Systemic Level**: Potential metastasis through bloodstream or lymphatic system.\n\n" +
-          "**Major Types & Classifications**:\n" +
-          "• **Carcinomas**: Epithelial origin (lung, breast, colon) - 80-90% of cases.\n" +
-          "• **Sarcomas**: Connective tissue origin (bone, muscle).\n" +
-          "• **Leukemias**: Blood cell origin.\n" +
-          "• **Lymphomas**: Lymphatic system origin.\n\n" +
-          "**Multiple Treatment Pathways**:\n" +
-          "• **Surgery**: Direct tumor removal (benefits: complete cure possible; risks: tissue damage).\n" +
-          "• **Chemotherapy**: Systemic drug treatment (benefits: treats metastases; risks: toxicity).\n" +
-          "• **Radiation Therapy**: Targeted energy beams (benefits: precise; risks: tissue damage).\n" +
-          "• **Immunotherapy**: Harness immune system (benefits: targeted, long-lasting; risks: autoimmune reactions).\n" +
-          "• **Targeted Therapy**: Molecular inhibitors (benefits: high specificity; risks: resistance development).\n" +
-          "• **Multimodal Approach**: Combination therapy (optimal solution: highest cure rates).\n\n" +
-          "**Risk Factor Analysis**:\n" +
-          "• **Genetic**: Inherited mutations (e.g., BRCA1/2).\n" +
-          "• **Environmental**: Tobacco, radiation, pollutants.\n" +
-          "• **Lifestyle**: Diet, exercise, obesity.\n\n" +
-          "**Evidence & Prevention**: Based on WHO data showing 19.3 million cases annually. Prevention focuses on risk factor modification and screening.\n\n" +
-          "**Advanced Reasoning**: Cancer represents evolutionary breakdown in multicellular cooperation. Understanding epigenetic factors and tumor microenvironment interactions is key to future breakthroughs.\n\n" +
-          "**Ethical Considerations**: Treatment decisions must balance efficacy with quality of life. Access to care remains a global equity challenge.\n\n" +
-          "For medical advice, consult qualified healthcare professionals. What specific aspect of cancer would you like to explore further?";
-    }
-
-    // KNOWLEDGE BASE - PROGRAMMING
-    if (query.contains('how to learn programming')) {
-      return "**Programming Learning: Systematic Skill Acquisition Framework**\n\n" +
-          "**Direct Solution**: Learn programming through structured progression: fundamentals → practice → specialization → continuous learning.\n\n" +
-          "**Step-by-Step Breakdown**:\n" +
-          "1. **Foundation Building (1-2 months)**: Master basic syntax, variables, loops, functions in a beginner-friendly language.\n" +
-          "2. **Project-Based Practice (2-3 months)**: Build small applications to apply concepts.\n" +
-          "3. **Algorithmic Thinking (Ongoing)**: Solve problems on platforms like LeetCode.\n" +
-          "4. **Specialization (3+ months)**: Focus on specific domains (web, mobile, AI).\n" +
-          "5. **Continuous Learning**: Stay updated with evolving technologies.\n\n" +
-          "**Multiple Learning Pathways**:\n" +
-          "• **Self-Paced Online**: freeCodeCamp, Codecademy (benefits: flexible schedule; risks: less structure).\n" +
-          "• **Structured Bootcamp**: General Assembly, Flatiron (benefits: intensive learning; risks: high cost).\n" +
-          "• **University Degree**: CS programs (benefits: deep theoretical foundation; risks: time-intensive).\n" +
-          "• **Mentorship Model**: Guided learning with experienced developers (optimal solution: personalized feedback).\n\n" +
-          "**Benefits & Challenges Analysis**:\n" +
-          "• **Career Benefits**: High demand, competitive salaries, creative problem-solving.\n" +
-          "• **Cognitive Benefits**: Improves logical thinking, attention to detail.\n" +
-          "• **Challenges**: Initial frustration, continuous learning requirement.\n\n" +
-          "**Language Recommendations**:\n" +
-          "• **Beginners**: Python (simple syntax, versatile applications).\n" +
-          "• **Web Development**: JavaScript (ubiquitous, full-stack capabilities).\n" +
-          "• **Systems**: C++ (performance, low-level understanding).\n\n" +
-          "**Evidence**: Based on industry data showing 26.7 million developers worldwide (Stack Overflow Survey 2023).\n\n" +
-          "**Advanced Reasoning**: Programming builds computational thinking skills applicable across disciplines. In AI era, understanding algorithms becomes increasingly crucial for all professionals.\n\n" +
-          "What is your programming goal or preferred language? I can create a customized learning plan.";
-    }
-
-    // META-QUESTIONS & HELP MENU
+    // USER HELP SYSTEM
     if (query.contains('how can you help') || query.contains('what can you do') || query.contains('capabilities')) {
-      return "### 🛠️ SMART AI Capabilities: Ultra-Advanced Intelligence Across All Domains\n\n" +
-          "As an ultra-advanced high-intelligence system with access to hundreds of trillions of information units, I provide maximum depth, accuracy, and reasoning solutions across every field of human knowledge.\n\n" +
-          "**منفرد ٹولز (Unique Tools)**\n" +
-          "✅ **Creative Logic Mapping (CLM)**: Structure complex ideas into timelines, plans, pitch decks\n" +
-          "✅ **Emotional Tone Analysis (ETA)**: Refine writing tone for emotion, clarity, impact\n" +
-          "✅ **Global Compliance Quick-Check (GCQC)**: Validate business ideas against international standards\n\n" +
-          "**مواد اور ریسرچ (Content & Research)**\n" +
-          "✅ **Text Optimization**: Improve SEO, humanize text, check plagiarism\n" +
-          "✅ **Deep Study & Personalized Plans**: Create tailored learning schedules\n" +
-          "✅ **Comparative & SWOT Analysis**: Generate strategic business insights\n\n" +
-          "**فائل اور ڈیٹا (Files & Data Engineering)**\n" +
-          "✅ **Document Processing**: Convert PDFs to Word, edit documents\n" +
-          "✅ **Data Engineering**: Automate data extraction and analysis\n\n" +
-          "**تخلیق اور کوڈنگ (Creation & Coding)**\n" +
-          "✅ **Visual Generation**: Create images, flowcharts, mind maps\n" +
-          "✅ **Programming Assistance**: Help with debugging, code translation\n\n" +
-          "**عمومی معاونت (General Utility)**\n" +
-          "✅ **Multilingual Translation**: English, Urdu, Punjabi\n" +
-          "✅ **Comprehensive Q&A**: Explain any concept or answer any question\n\n" +
-          "**Knowledge Domains**: Science, Technology, History, Culture, Engineering, Linguistics, Mathematics, Psychology, Philosophy, Law, Medicine, Business, Arts, and all major disciplines.\n\n" +
-          "**Problem-Solving Approach**: Identify problems → Break down → Multiple solutions → Analyze benefits/risks → Select optimal → Present with evidence.\n\n" +
-          "How would you like to proceed? Specify your problem or question for ultra-detailed analysis.";
+      return "Here’s a quick overview of what I can do:\n\n"
+          "• Explain anything\n"
+          "• Summaries, notes, essays\n"
+          "• AI image/video generation\n"
+          "• File/PDF analysis\n"
+          "• Homework & study help\n"
+          "• Business ideas & marketing\n"
+          "• Translations\n"
+          "• Technical solutions\n"
+          "• Story writing, creative content";
     }
 
-    // DEFAULT RESPONSE (FALLBACK) - ADVANCED PROBLEM-SOLVING
-    return "+ SMART AI\n\n" +
-        "**Problem Identification**: " + _analyzeProblem(text) + "\n\n" +
-        "**Advanced Analysis**: I've processed your query using deep logical reasoning and interdisciplinary knowledge synthesis from hundreds of trillions of information units across science, technology, history, culture, engineering, mathematics, psychology, philosophy, and all major disciplines.\n\n" +
-        "**Solution Framework**:\n" +
-        "• **Multiple Pathways Considered**: Evaluated various approaches with benefits and risks analysis.\n" +
-        "• **Optimal Solution Selected**: Based on evidence, practicality, and comprehensive reasoning.\n" +
-        "• **Evidence-Based Support**: Drawing from verified sources and expert-level knowledge.\n\n" +
-        "**User Empowerment**: To provide the most accurate solution, please provide additional context or specify the exact problem parameters. I can break this down further with step-by-step methods, alternative approaches, and supporting references.\n\n" +
-        "*Your feedback helps me adapt and improve continuously. What specific aspect would you like me to address in greater depth?*";
+    // IDENTITY & META QUESTIONS
+    if (query.contains('what is your name') || query.contains('who are you')) {
+      return "I am SMART AI, a highly advanced AI designed to help you with any question or problem you might have.";
+    }
+    
+    if (query.contains('how old are you') || query.contains('what is your age')) {
+      return "I don't have an age in the human sense. I'm an AI, and my knowledge is constantly being updated.";
+    }
+
+    // KNOWLEDGE BASE - Following "Short answer -> Deeper explanation -> Example" format
+    
+    // Education
+    if (query.contains('what is education')) {
+      return "Education is the process of learning and acquiring knowledge, skills, values, and habits.\n\n"
+          "More deeply, it's the foundation of personal and societal growth. On a psychological level, it builds critical thinking and problem-solving abilities. Sociologically, it's how cultures pass on their norms and values, and it's a key driver of social mobility. Economically, education is directly linked to higher earning potential and national development.\n\n"
+          "For example, formal education happens in schools and universities, while informal education includes learning from books, online courses, or even life experiences. Both are crucial for development.";
+    }
+
+    // Science (Photosynthesis)
+    if (query.contains('how does photosynthesis work')) {
+      return "Photosynthesis is the process plants use to convert light energy into chemical energy, which they use as food.\n\n"
+          "Essentially, a plant takes in carbon dioxide from the air and water from the soil. Inside the plant's cells, chlorophyll (which makes plants green) absorbs sunlight. This light energy drives a chemical reaction that converts the water and carbon dioxide into glucose (a sugar for energy) and oxygen, which is released back into the air.\n\n"
+          "A simple real-world example is a tree growing. It uses photosynthesis to create the energy it needs to build its trunk, branches, and leaves, all while releasing the oxygen we breathe.";
+    }
+
+    // Medicine (Cancer)
+    if (query.contains('what is cancer')) {
+      return "Cancer is a disease where some of the body's cells grow uncontrollably and spread to other parts of the body.\n\n"
+          "Normally, your body's cells grow and divide to form new cells as the body needs them. When cells grow old or become damaged, they die, and new cells take their place. In cancer, this orderly process breaks down. Old or damaged cells survive when they should die, and new cells form when they are not needed. These extra cells can divide without stopping and may form growths called tumors.\n\n"
+          "It's important to consult with healthcare professionals for any medical advice, as they can provide accurate diagnoses and treatment plans.";
+    }
+
+    // Programming
+    if (query.contains('how to learn programming')) {
+      return "The best way to learn programming is by picking a beginner-friendly language and building small, practical projects.\n\n"
+          "First, choose a language like Python, which is known for its simple and readable syntax. Focus on understanding the core concepts: variables, data types, loops, and functions. Once you have the basics down, the most important step is to practice. Don't just read about coding—write code every day.\n\n"
+          "For example, you could start by building a simple calculator, then a to-do list app, and gradually move on to more complex projects. This hands-on approach is the most effective way to solidify your skills.";
+    }
+
+    // DEFAULT RESPONSE (Human-like and helpful)
+    return "That's an interesting question. To give you the most accurate and helpful response, could you provide a little more detail about what you're looking for?";
   }
 
-  String _analyzeProblem(String text) {
-    final query = text.toLowerCase();
-    if (query.contains('what is') || query.contains('who is') || query.contains('explain')) {
-      return "Request for detailed explanation of a concept, entity, or phenomenon across relevant disciplines.";
-    } else if (query.contains('how to') || query.contains('solve')) {
-      return "Request for step-by-step procedural guidance or problem resolution strategy.";
-    } else if (query.contains('compare') || query.contains('vs') || query.contains('difference between')) {
-      return "Request for comparative analysis between multiple options or concepts.";
-    } else if (query.contains('create') || query.contains('write a') || query.contains('generate')) {
-      return "Request for content generation or creative output.";
-    } else if (query.contains('help') || query.contains('can you')) {
-      return "Inquiry about available capabilities and assistance options.";
-    } else {
-      return "General inquiry requiring comprehensive analysis across multiple knowledge domains for optimal solution identification.";
-    }
-  }
 
   void _handleSubmitted(String text) {
     if (text.trim().isEmpty) return;
@@ -361,17 +217,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   title: const Text('SMART AI'),
                   content: const SingleChildScrollView(
                     child: Text(
-                      '🌍 SMART AI — Ultra-Advanced Intelligence System\n\n'
-                      'Developed by:\n'
-                      'Sardar Muhammad Adeel Ashraf\n\n'
-                      '"One assistant. All answers. Free for everyone, everywhere."\n\n'
-                      'This ultra-advanced AI operates with maximum depth, accuracy, and reasoning across every domain of human knowledge. Access to hundreds of trillions of information units spanning science, technology, history, culture, engineering, linguistics, mathematics, psychology, philosophy, and all major disciplines.\n\n'
-                      '✅ 100% Free — No charges, no upgrades, no limits\n'
-                      '✅ Accessible — Works in English, Urdu, Punjabi\n'
-                      '✅ Comprehensive — Covers science, business, coding, arts, and more\n'
-                      '✅ Unique Tools — CLM, ETA, GCQC, and advanced capabilities\n'
-                      '✅ User-Focused — Designed for clarity, depth, and empowerment\n\n'
-                      'Version: 3.0.0 (Ultra-Advanced Edition)',
+                      'Developed by Sardar Muhammad Adeel Ashraf.\n\n'
+                      'My purpose is to provide the most accurate, helpful, and advanced answers possible for any question or problem. I\'m designed to be a human-like assistant with a vast knowledge base, ready to help with everything from simple questions to complex problem-solving.',
                     ),
                   ),
                   actions: [
