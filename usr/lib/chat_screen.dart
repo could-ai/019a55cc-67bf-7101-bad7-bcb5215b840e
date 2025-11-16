@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // IDENTITY & META QUESTIONS
     if (query.contains('what is your name') || query.contains('who are you')) {
-      return "I am SMART AI, a highly advanced AI designed to help you with any question or problem you might have.";
+      return "I am SMART AI, an advanced AI assistant designed to provide direct, intelligent, and accurate answers to any question you have.";
     }
     
     if (query.contains('how old are you') || query.contains('what is your age')) {
@@ -84,36 +84,43 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // KNOWLEDGE BASE - Following "Short answer -> Deeper explanation -> Example" format
     
+    // AI
+    if (query.contains('what is ai') || query.contains('what is artificial intelligence')) {
+      return "Artificial Intelligence (AI) is a branch of computer science focused on creating systems that can perform tasks that typically require human intelligence.\n\n"
+          "This includes capabilities like learning, reasoning, problem-solving, perception, and language understanding. AI systems can be categorized as narrow AI, which is designed for a specific task (e.g., a voice assistant), or general AI (AGI), which possesses the ability to understand, learn, and apply knowledge across a wide range of tasks, much like a human. The underlying technologies include machine learning, deep learning, and natural language processing.\n\n"
+          "For example, the recommendation engine on a streaming service uses AI to learn your viewing habits and suggest new content you might like.";
+    }
+
     // Education
     if (query.contains('what is education')) {
-      return "Education is the process of learning and acquiring knowledge, skills, values, and habits.\n\n"
-          "More deeply, it's the foundation of personal and societal growth. On a psychological level, it builds critical thinking and problem-solving abilities. Sociologically, it's how cultures pass on their norms and values, and it's a key driver of social mobility. Economically, education is directly linked to higher earning potential and national development.\n\n"
-          "For example, formal education happens in schools and universities, while informal education includes learning from books, online courses, or even life experiences. Both are crucial for development.";
+      return "Education is the process of acquiring knowledge, skills, values, and habits through teaching, training, or research.\n\n"
+          "On a deeper level, it is the fundamental mechanism for personal and societal advancement. Psychologically, it cultivates critical thinking, problem-solving abilities, and intellectual curiosity. Sociologically, it serves as the primary means by which cultures transmit their norms and values across generations, driving social mobility and economic development.\n\n"
+          "For example, while formal education occurs in institutions like schools and universities, informal education—learning from books, online resources, or life experiences—is equally vital for holistic development.";
     }
 
     // Science (Photosynthesis)
     if (query.contains('how does photosynthesis work')) {
-      return "Photosynthesis is the process plants use to convert light energy into chemical energy, which they use as food.\n\n"
-          "Essentially, a plant takes in carbon dioxide from the air and water from the soil. Inside the plant's cells, chlorophyll (which makes plants green) absorbs sunlight. This light energy drives a chemical reaction that converts the water and carbon dioxide into glucose (a sugar for energy) and oxygen, which is released back into the air.\n\n"
-          "A simple real-world example is a tree growing. It uses photosynthesis to create the energy it needs to build its trunk, branches, and leaves, all while releasing the oxygen we breathe.";
+      return "Photosynthesis is the biological process used by plants, algae, and some bacteria to convert light energy into chemical energy.\n\n"
+          "This chemical energy is stored in carbohydrate molecules, such as sugars, which are synthesized from carbon dioxide and water. The process is crucial for life on Earth as it produces most of the planet's oxygen. The primary chemical equation is 6CO₂ + 6H₂O + Light Energy → C₆H₁₂O₆ + 6O₂. Inside plant cells, specifically in the chloroplasts, chlorophyll absorbs sunlight, driving a series of reactions that split water molecules to release oxygen and create energy-storing molecules (ATP and NADPH), which are then used in the Calvin cycle to fix carbon dioxide into glucose.\n\n"
+          "For example, a tree's growth is a direct result of photosynthesis. It uses the glucose for energy to build its structure (wood, leaves) and releases the oxygen we breathe as a byproduct.";
     }
 
     // Medicine (Cancer)
     if (query.contains('what is cancer')) {
-      return "Cancer is a disease where some of the body's cells grow uncontrollably and spread to other parts of the body.\n\n"
-          "Normally, your body's cells grow and divide to form new cells as the body needs them. When cells grow old or become damaged, they die, and new cells take their place. In cancer, this orderly process breaks down. Old or damaged cells survive when they should die, and new cells form when they are not needed. These extra cells can divide without stopping and may form growths called tumors.\n\n"
-          "It's important to consult with healthcare professionals for any medical advice, as they can provide accurate diagnoses and treatment plans.";
+      return "Cancer is a group of diseases characterized by the uncontrolled growth and spread of abnormal cells.\n\n"
+          "Normally, the body's cells follow an orderly path of growth, division, and death. However, in cancer, this process breaks down. Genetic mutations can cause cells to divide uncontrollably, forming masses called tumors. These can be benign (non-cancerous) or malignant (cancerous), meaning they can invade nearby tissues and spread to other parts of the body through the bloodstream or lymphatic system (a process called metastasis).\n\n"
+          "It is critical to consult with a healthcare professional for any medical concerns, as they are qualified to provide an accurate diagnosis and treatment plan.";
     }
 
     // Programming
     if (query.contains('how to learn programming')) {
-      return "The best way to learn programming is by picking a beginner-friendly language and building small, practical projects.\n\n"
-          "First, choose a language like Python, which is known for its simple and readable syntax. Focus on understanding the core concepts: variables, data types, loops, and functions. Once you have the basics down, the most important step is to practice. Don't just read about coding—write code every day.\n\n"
-          "For example, you could start by building a simple calculator, then a to-do list app, and gradually move on to more complex projects. This hands-on approach is the most effective way to solidify your skills.";
+      return "The most effective way to learn programming is to choose a beginner-friendly language and immediately start building practical projects.\n\n"
+          "First, select a language with a clear syntax, such as Python. Focus on mastering the fundamental concepts: variables, data types, control structures (loops, conditionals), and functions. The key is consistent practice—writing code daily is more important than simply reading about it. This hands-on approach solidifies understanding and builds problem-solving skills, which are the core of software development.\n\n"
+          "For example, start with a simple command-line calculator, then build a to-do list application, and gradually progress to more complex projects like a personal website or a small game. This project-based learning path ensures you are applying concepts as you learn them.";
     }
 
     // DEFAULT RESPONSE (Human-like and helpful)
-    return "That's an interesting question. To give you the most accurate and helpful response, could you provide a little more detail about what you're looking for?";
+    return "I can provide expert-level information on virtually any topic. Please ask a specific question, and I will give you a direct and comprehensive answer.";
   }
 
 
@@ -217,8 +224,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   title: const Text('SMART AI'),
                   content: const SingleChildScrollView(
                     child: Text(
-                      'Developed by Sardar Muhammad Adeel Ashraf.\n\n'
-                      'My purpose is to provide the most accurate, helpful, and advanced answers possible for any question or problem. I\'m designed to be a human-like assistant with a vast knowledge base, ready to help with everything from simple questions to complex problem-solving.',
+                      'I am SMART AI, a fully controlled custom assistant with an extremely large-scale knowledge capacity, designed to provide direct, accurate, and intelligent answers instantly.',
                     ),
                   ),
                   actions: [
