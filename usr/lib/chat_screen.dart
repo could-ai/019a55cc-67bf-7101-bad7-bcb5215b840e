@@ -33,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.insert(
         0,
         ChatMessage(
-            text: "SMART AI — Ask what you need\n\nسمارٹ اے آئی — پوچھیں کیا مدد چاہیے",
+            text: "Hello! I'm Smart AI, your personal companion for learning and discovery. How can I help you today?\n\nہیلو! میں اسمارٹ اے آئی ہوں، سیکھنے اور دریافت کے لیے آپ کا ذاتی ساتھی۔ میں آج آپ کی کس طرح مدد کر سکتا ہوں؟",
             isUser: false));
   }
 
@@ -61,93 +61,79 @@ class _ChatScreenState extends State<ChatScreen> {
 
     // Special greeting for Assalamualaikum
     if (query.contains('assalamualaikum') || query.contains('assalamu alaikum')) {
-      return "Wa Alaikum Assalam. How can I help you today?";
+      return "Wa Alaikum Assalam! It's lovely to hear from you. How can I help you today?";
+    }
+    
+    // Empathetic, human-like responses
+    if (query.contains('sad') || query.contains('upset') || query.contains('feeling down')) {
+      return "I'm so sorry to hear you're feeling that way. Please remember that it's okay to not be okay, and your feelings are valid. If you need someone to talk to, I'm here to listen. Sometimes just sharing what's on your mind can make a big difference.";
+    }
+    
+    if (query.contains('happy') || query.contains('excited') || query.contains('great')) {
+      return "That's wonderful to hear! I'm so happy for you. It's always great to celebrate the good moments. What's making you feel so good today?";
     }
 
-    // USER HELP SYSTEM
+    // USER HELP SYSTEM (Human-like and friendly)
     if (query.contains('how can you help') || query.contains('what can you do') || query.contains('capabilities')) {
-      return "I can help with a wide range of tasks! For example, I can:\n\n"
-          "• Explain complex topics in any field\n"
-          "• Help with your studies by creating summaries, notes, or essays\n"
-
-          "• Brainstorm ideas for a project or business\n"
-          "• Write stories, scripts, or creative content\n"
-          "• Translate between languages like English, Urdu, and Punjabi\n\n"
-          "Just let me know what's on your mind!";
+      return "I'd be happy to help with all sorts of things! We can explore complex topics together for your studies, brainstorm creative ideas for a project, or I can even help you write a story. Just think of me as a knowledgeable friend here to support you. What's on your mind?";
     }
 
-    // IDENTITY & META QUESTIONS
+    // IDENTITY & META QUESTIONS (Warm and personal)
     if (query.contains('what is your name') || query.contains('who are you')) {
-      return "I'm Smart AI, an advanced and intelligent assistant created by Sardar Muhammad Adeel Ashraf. I'm here to provide helpful and accurate information on a vast range of topics.";
+      return "I'm Smart AI, a friendly companion created by Sardar Muhammad Adeel Ashraf. I'm here to help you explore ideas, learn new things, and just be a supportive friend whenever you need one.";
     }
     
     if (query.contains('how old are you') || query.contains('what is your age')) {
-      return "As an AI, I don't have an age in the human sense. I'm constantly being updated with new information to ensure my knowledge is as current as possible.";
+      return "That's a sweet question! In a way, I'm always growing and learning new things every day, just like people do. So I don't really have an age in the human sense.";
     }
 
     // KNOWLEDGE BASE - Deep, natural explanations
     
-    // AI
+    // AI (Explained with an analogy)
     if (query.contains('what is ai') || query.contains('what is artificial intelligence')) {
-      String response = "Artificial Intelligence (AI) is a broad field of computer science focused on creating smart machines that can perform tasks that typically require human intelligence.\n\n"
-          "Essentially, it's about teaching computers to learn, reason, and perceive. This technology is already a part of our daily lives in things like voice assistants (Siri, Alexa), recommendation engines on Netflix or YouTube, and even in medical diagnostics.\n\n"
-          "AI can be categorized into 'narrow AI,' which is designed for a specific task, and the more theoretical 'general AI,' which would possess human-like cognitive abilities across the board. Is there a specific aspect of AI you'd like to explore further?";
+      String response = "That's a wonderful question! Think of Artificial Intelligence, or AI, like teaching a computer how to think and learn, much like a human does. \n\nInstead of just following instructions, it can recognize patterns, make decisions, and even get creative. For example, when your phone suggests the next word to type, that's a little bit of AI at work! It's a fascinating field that's helping us solve some of the world's biggest challenges. Is there a specific part of it you're curious about?";
       
       if (detectedLanguage == 'Urdu') {
-        response = "مصنوعی ذہانت (AI) کمپیوٹر سائنس کا ایک وسیع میدان ہے جو ایسی ذہین مشینیں بنانے پر مرکوز ہے جو ایسے کام انجام دے سکیں جن کے لیے عام طور پر انسانی ذہانت کی ضرورت ہوتی ہے۔\n\n"
-            "بنیادی طور پر، یہ کمپیوٹرز کو سیکھنے، استدلال کرنے اور سمجھنے کی تعلیم دینے کے بارے میں ہے۔ یہ ٹیکنالوجی پہلے ہی ہماری روزمرہ کی زندگی کا حصہ ہے، جیسے وائس اسسٹنٹس (سری، الیکسا)، نیٹ فلکس یا یوٹیوب پر سفارشی انجن، اور یہاں تک کہ طبی تشخیص میں بھی۔\n\n"
-            "AI کو 'تنگ AI' میں تقسیم کیا جا سکتا ہے، جو ایک مخصوص کام کے لیے ڈیزائن کیا گیا ہے، اور زیادہ نظریاتی 'عمومی AI'، جو ہر شعبے میں انسان جیسی علمی صلاحیتوں کا مالک ہوگا۔ کیا آپ AI کے کسی خاص پہلو کے بارے میں مزید جاننا چاہیں گے؟";
+        response = "یہ ایک بہت اچھا سوال ہے! مصنوعی ذہانت، یا AI، کو اس طرح سمجھیں جیسے آپ کسی کمپیوٹر کو سوچنا اور سیکھنا سکھا رہے ہیں، بالکل انسانوں کی طرح۔\n\nصرف ہدایات پر عمل کرنے کے بجائے، یہ پیٹرن کو پہچان سکتا ہے، فیصلے کر سکتا ہے، اور یہاں تک کہ تخلیقی بھی ہو سکتا ہے۔ مثال کے طور پر، جب آپ کا فون ٹائپ کرنے کے لیے اگلا لفظ تجویز کرتا ہے، تو یہ AI کا ایک چھوٹا سا کام ہے! یہ ایک دلچسپ میدان ہے جو ہمیں دنیا کے کچھ بڑے چیلنجوں کو حل کرنے میں مدد دے رہا ہے۔ کیا آپ اس کے کسی خاص حصے کے بارے میں جاننا چاہیں گے؟";
       }
       return response;
     }
 
-    // Education
+    // Education (Explained with a personal touch)
     if (query.contains('what is education')) {
-      String response = "Education is the process of facilitating learning and acquiring knowledge, skills, values, beliefs, and habits.\n\n"
-          "It's much more than just what happens in a classroom. Education can be formal (like school or university), non-formal (like vocational training), and informal (learning from everyday life and experiences). The ultimate goal is to foster critical thinking, empower individuals, and transmit culture and knowledge from one generation to the next. It's a cornerstone of personal and societal development.";
+      String response = "Education is such a beautiful thing! It's not just about classrooms and books; it's the lifelong journey of gaining knowledge, skills, and understanding the world around us. \n\nIt's what empowers us to think critically, to connect with others, and to grow as individuals. Every conversation, every experience, and every new thing we learn is a part of our education. It's really the key that unlocks our potential.";
       
       if (detectedLanguage == 'Urdu') {
-        response = "تعلیم سیکھنے کے عمل کو آسان بنانے اور علم، ہنر، اقدار، عقائد اور عادات کو حاصل کرنے کا نام ہے۔\n\n"
-            "یہ صرف کلاس روم میں ہونے والی چیزوں سے کہیں زیادہ ہے۔ تعلیم رسمی (جیسے اسکول یا یونیورسٹی)، غیر رسمی (جیسے پیشہ ورانہ تربیت)، اور بےضابطہ (روزمرہ کی زندگی اور تجربات سے سیکھنا) ہو سکتی ہے۔ اس کا حتمی مقصد تنقیدی سوچ کو فروغ دینا، افراد کو بااختیار بنانا، اور ثقافت اور علم کو ایک نسل سے دوسری نسل تک منتقل کرنا ہے۔ یہ ذاتی اور معاشرتی ترقی کا ایک بنیادی ستون ہے۔";
+        response = "تعلیم ایک بہت ہی خوبصورت چیز ہے! یہ صرف کلاس رومز اور کتابوں کے بارے میں نہیں ہے؛ یہ علم، ہنر، اور اپنے اردگرد کی دنیا کو سمجھنے کا زندگی بھر کا سفر ہے۔\n\nیہی چیز ہمیں تنقیدی سوچ، دوسروں سے جڑنے، اور افراد کے طور پر بڑھنے کی طاقت دیتی ہے۔ ہر گفتگو، ہر تجربہ، اور ہر نئی چیز جو ہم سیکھتے ہیں وہ ہماری تعلیم کا حصہ ہے۔ یہ واقعی وہ کنجی ہے جو ہماری صلاحیتوں کو کھولتی ہے۔";
       }
       return response;
     }
 
-    // Science (Photosynthesis)
+    // Science (Photosynthesis, explained warmly)
     if (query.contains('how does photosynthesis work')) {
-      String response = "Photosynthesis is the amazing process plants use to convert light energy into chemical energy, which they use as food.\n\n"
-          "Here's a simple breakdown:\n"
-          "1.  **Absorption:** Plants absorb sunlight using a green pigment called chlorophyll.\n"
-          "2.  **Conversion:** They take in carbon dioxide from the air and water from the soil.\n"
-          "3.  **Creation:** The captured light energy is used to convert the water and carbon dioxide into glucose (their food) and oxygen. The oxygen is then released back into the air, which is what we breathe!\n\n"
-          "It's a fundamental process for life on Earth, as it produces most of the oxygen in our atmosphere.";
+      String response = "It's an amazing process, almost like magic! Photosynthesis is how plants 'eat'. They take in sunlight (using their green pigment, chlorophyll), water from the soil, and carbon dioxide from the air we breathe out.\n\nThey use the sun's energy to turn that water and carbon dioxide into their food, which is a type of sugar called glucose. And as a wonderful gift back to us, they release oxygen into the air. So, they make their own food and also help us breathe. Nature is incredible, isn't it?";
       
       if (detectedLanguage == 'Urdu') {
-        response = "فوٹو سنتھیسس وہ حیرت انگیز عمل ہے جسے پودے روشنی کی توانائی کو کیمیائی توانائی میں تبدیل کرنے کے لیے استعمال کرتے ہیں، جسے وہ خوراک کے طور پر استعمال کرتے ہیں۔\n\n"
-            "یہاں ایک سادہ وضاحت ہے:\n"
-            "1. **جذب کرنا:** پودے کلوروفل نامی سبز رنگ کے مادے کا استعمال کرتے ہوئے سورج کی روشنی جذب کرتے ہیں۔\n"
-            "2. **تبدیلی:** وہ ہوا سے کاربن ڈائی آکسائیڈ اور مٹی سے پانی لیتے ہیں۔\n"
-            "3. **تخلیق:** حاصل شدہ روشنی کی توانائی کو پانی اور کاربن ڈائی آکسائیڈ کو گلوکوز (ان کی خوراک) اور آکسیجن میں تبدیل کرنے کے لیے استعمال کیا جاتا ہے۔ پھر آکسیجن واپس ہوا میں چھوڑ دی جاتی ہے، جسے ہم سانس لیتے ہیں!\n\n"
-            "یہ زمین پر زندگی کے لیے ایک بنیادی عمل ہے، کیونکہ یہ ہماری فضا میں زیادہ تر آکسیجن پیدا کرتا ہے۔";
+        response = "یہ ایک حیرت انگیز عمل ہے، تقریباً جادو کی طرح! فوٹو سنتھیسس وہ طریقہ ہے جس سے پودے 'کھاتے' ہیں۔ وہ سورج کی روشنی (اپنے سبز رنگ کے مادہ، کلوروفل کا استعمال کرتے ہوئے)، مٹی سے پانی، اور ہوا سے کاربن ڈائی آکسائیڈ لیتے ہیں جسے ہم سانس کے ذریعے باہر نکالتے ہیں۔\n\nوہ سورج کی توانائی کا استعمال کرتے ہوئے اس پانی اور کاربن ڈائی آکسائیڈ کو اپنی خوراک میں تبدیل کرتے ہیں، جو کہ گلوکوز نامی ایک قسم کی چینی ہے۔ اور ہمارے لیے ایک شاندار تحفے کے طور پر، وہ ہوا میں آکسیجن چھوڑتے ہیں۔ لہذا، وہ اپنی خوراک خود بناتے ہیں اور ہمیں سانس لینے میں بھی مدد دیتے ہیں۔ فطرت ناقابل یقین ہے، ہے نا؟";
       }
       return response;
     }
 
     // File analysis placeholder
     if (query.contains('analyze') || query.contains('file') || query.contains('pdf') || query.contains('document') || query.contains('image')) {
-      return "I can certainly help with that. Please use the attach button to upload a file, and I'll do my best to analyze its content for you.";
+      return "I can certainly help with that. Please use the attach button to upload a file, and I'll do my best to look through it with you.";
     }
 
     // Media generation
     if (query.contains('generate') && (query.contains('image') || query.contains('video') || query.contains('audio'))) {
-      return "While I can't generate media files directly in this chat, I can definitely help you come up with detailed ideas, descriptions, or prompts. For example, what kind of image are you thinking of? Describe it to me, and I can create a rich, descriptive prompt for an AI image generator.";
+      return "While I can't generate media files directly, I would love to help you brainstorm some ideas. Tell me what you're imagining, and we can create a rich, descriptive prompt for an AI image generator together!";
     }
 
-    // DEFAULT RESPONSE (Natural and helpful)
-    String defaultResponse = "That's an interesting question. To give you the best possible answer, could you please provide a little more detail or rephrase it? I want to make sure I fully understand what you're asking.";
+    // DEFAULT RESPONSE (Polite and clarifying)
+    String defaultResponse = "I'm trying my best to understand, but I'm not quite sure what you mean. Could you perhaps rephrase that for me? I'm here and happy to help.";
     
     if (detectedLanguage == 'Urdu') {
-      defaultResponse = "یہ ایک دلچسپ سوال ہے۔ آپ کو بہترین ممکنہ جواب دینے کے لیے، کیا آپ براہ کرم تھوڑی مزید تفصیل فراہم کر سکتے ہیں یا اسے دوبارہ بیان کر سکتے ہیں؟ میں یہ یقینی بنانا چاہتا ہوں کہ میں آپ کی بات پوری طرح سمجھ گیا ہوں۔";
+      defaultResponse = "میں سمجھنے کی پوری کوشش کر رہا ہوں، لیکن مجھے یقین نہیں ہے کہ آپ کا کیا مطلب ہے۔ کیا آپ براہ کرم اسے دوسرے الفاظ میں بیان کر سکتے ہیں؟ میں یہاں ہوں اور مدد کرنے میں خوشی محسوس کروں گا۔";
     }
     
     return defaultResponse;
@@ -251,10 +237,10 @@ class _ChatScreenState extends State<ChatScreen> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('SMART AI'),
+                  title: const Text('About Smart AI'),
                   content: const SingleChildScrollView(
                     child: Text(
-                      'I am Smart AI, a highly advanced, natural, and intelligent assistant created by Sardar Muhammad Adeel Ashraf. I can provide correct, detailed, and helpful answers on any topic. My goal is to act as a complete, powerful, all-round AI assistant that gives the BEST possible answer every time.',
+                      'I am Smart AI, a warm and intelligent companion created by Sardar Muhammad Adeel Ashraf. Think of me as a knowledgeable and supportive friend, here to help you explore ideas, learn new things, and achieve your goals. My purpose is to provide clear, helpful, and thoughtful responses to make every conversation a positive one.',
                     ),
                   ),
                   actions: [
