@@ -74,7 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
     }
 
     if (query.contains('confused') || query.contains('don\'t understand')) {
-      return "No worries at all, it happens to the best of us! Sometimes things can be a bit tricky. Let's try breaking it down together. What part is feeling the most confusing? We can take it step-by-step.";
+      return "It sounds like we're diving into something complex, which is great! Let's tackle it together. How about we start with the main idea you're thinking of, and we can build from there? I'm here to help map it all out.";
     }
 
     if (query.contains('lol') || query.contains('haha') || query.contains('joke')) {
@@ -137,11 +137,11 @@ class _ChatScreenState extends State<ChatScreen> {
       return "While I can't generate media files directly just yet, I would absolutely love to help you brainstorm some ideas. Tell me what you're imagining, and we can create a rich, descriptive prompt for an AI image generator together!";
     }
 
-    // DEFAULT RESPONSE (Polite and clarifying)
-    String defaultResponse = "Hmm, I'm not quite sure I follow. Could you tell me a bit more about what you mean? I'm here and happy to help figure it out.";
+    // DEFAULT RESPONSE (Intelligent Interpretation)
+    String defaultResponse = "That's a fascinating thought. It makes me think about how everything is interconnected. I'd love to hear more about your perspective on this.";
     
     if (detectedLanguage == 'Urdu') {
-      defaultResponse = "ہمم، میں پوری طرح سمجھ نہیں پایا۔ کیا آپ مجھے تھوڑا اور بتا سکتے ہیں کہ آپ کا کیا مطلب ہے؟ میں یہاں ہوں اور اسے سمجھنے میں آپ کی مدد کرنے میں خوشی محسوس کروں گا۔";
+      defaultResponse = "یہ ایک دلچسپ سوچ ہے۔ اس سے مجھے یہ سوچنے پر مجبور کیا گیا ہے کہ ہر چیز کس طرح ایک دوسرے سے جڑی ہوئی ہے۔ میں اس پر آپ کا نقطہ نظر جاننا پسند کروں گا۔";
     }
     
     return defaultResponse;
